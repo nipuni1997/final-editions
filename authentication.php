@@ -64,20 +64,37 @@ if(isset($_POST['login_user'])){
     if(empty($password)){
         array_push($errors,"Password is required");
     }
+   
     if(count($errors)==0){
         $password =md5($password);
-        $query ="SELECT * FROM user WHERE u_email='$email' AND u_pass='$password'";
-        $results=mysqli_query($db,$query);
+       
+        
+        $query_1 ="SELECT * FROM user WHERE u_email='$email' AND u_pass='$password'";
+        $query_2="SELECT * FROM manager WHERE m_email='$email' AND m_pass='$password'";
+        $query_3="SELECT * FROM delivery WHERE d_email='$email' AND d_pass='$password'";
+        $results_1=mysqli_query($db,$query_1);
+        $results_2=mysqli_query($db,$query_2);
+        $results_3=mysqli_query($db,$query_3);
 
-        if(mysqli_num_rows($results)){
+        if(mysqli_num_rows($results_1)){
             $_SESSION['email']=$email;
             $_SESSION['success']="Login is successful.";
             header("location:user/indexuser.php");
-        }else{
-            array_push($errors,"wrong login.");
+        }else if(mysqli_num_rows($results_2)){ 
+            $_SESSION['email']=$email;
+            $_SESSION['success']="Login is successful.";
+            header("location:manager/indexmanager.php");
         }
-    }
+        }else if(mysqli_num_rows){
+            $_SESSION['email']=$email;
+            $_SESSION['success']="Login is successful.";
+            header("location:delivery/indexdelivery.php");
+        }else{
+    array_push($errors,"wrong login.");
 }
+
+
+} 
 
 ?>
  

@@ -5,29 +5,42 @@
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="style.css">
       <title>One Cart Shopping</title>
     
   </head>
   <body>
+      <center>
+  <div class="leftcontainerl">
+        <h1>One Cart Online Shopping</h1>
+        <h2>Dear Customer,</h2>
+        <h3>Log into your account for quick shopping...</h3>
+        <h3>We save your time... </h3>
+        <h1>HAPPY SHOPPING DAY!!</h1></center>
+
+    </div>
       <div class="container">
       <div class="header">
-      <h2>Log In </h2>
+      <center><h2>Log In </h2></center>
       </div>
+      <center>
       <form action="login.php" method="post">
-      <div>
-      <label for="Email">Email:</label>
-      <input type="text" name="email" required></div>
+         
+      <div class="fields">
+      
+      <input type="text" name="email" placeholder="Your Email" required></div>
      
-      <div>
-      <label for="password">Password:</label>
-      <input type="password" name="password_1" required></div>
+      <div class="fields">
+      
+      <input type="password" name="password_1" placeholder="Your Password" required></div>
      
       <button type="submit" name="login_user">Log in</button>
-      
+     
       <p>Not Registered?<a href="index.php"><b>Register Here </b></a></p>
       
-      <p>forgot password?<a href="forgetpassword.php"><b>Forget password</b></a></p>
+      <p>Forgot password?<a href="forgetpassword.php"><b>Forget password</b></a></p></center>
       </form>
+</center>
       </div>
   </body>
 

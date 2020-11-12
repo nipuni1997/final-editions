@@ -67,7 +67,7 @@
         if(isset($_GET['view_deliver'])){
             include("view_deliver.php");
         }
-        // if(isset($_GET['view_deliverstatus'])){
-        //     include("view_deliverstatus.php");
-        // }
+         if(isset($_GET['view_deliverstatus'])){
+             include("view_deliverstatus.php");
+         }
     ?>

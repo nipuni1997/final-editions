@@ -498,9 +498,6 @@
 
           $sub_total=$row_pro['pro_price'] * $row_cart['qnty'];
           // need a while loop
-          $i=1;
-
-          while($row=$fetch_pro->fetch()):
             echo "<tr>
                     <td style='min-width:50px'>".$i++."</td>
                     <td style='min-width:50px'>".$row_user['u_id']."</td>
@@ -517,12 +514,9 @@
                     <td>".$sub_total."/=</td>
 
                  </tr>";
-                 endwhile;
-        else{
-          echo "<center><h2>Nothing To Display.</br>
-                            No One Order Foods From Your Shop....!!!</h2></center>";
-        }
-        }
+                }  
+        
+        
         
     }
 

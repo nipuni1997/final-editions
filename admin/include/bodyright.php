@@ -4,6 +4,7 @@
       if(!isset($_GET['add_product'])){
       if(!isset($_GET['viewall_products'])){
       if(!isset($_GET['view_order'])){
+      if(!isset($_GET['view_user'])){
       if(!isset($_GET['add_manager'])){
       if(!isset($_GET['view_manager'])){
       if(!isset($_GET['add_deliver'])){
@@ -30,5 +31,5 @@
 
 <?php
 } } } } } } } }}
-}
+}}
 ?>

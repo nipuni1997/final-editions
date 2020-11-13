@@ -33,7 +33,7 @@ body{
 #bodyleft{
     /* background-image: ; */
     width: 25%;
-    height: 600px;
+    height: 570px;
     margin-top: 10px;
     margin-left: 0px;
     border-radius: 3px;
@@ -119,10 +119,10 @@ body{
 #bodyright{
     padding-bottom: 1%;
     width: 74%;
-    min-height: 515px;
+    min-height: 555px;
     /* margin-top: 10px;
     margin-left: 10px; */
-    margin: 10px 0px 10px 10px;
+    margin: 10px 0px 10px 5px;
     border-radius: 3px;
     float: left;
     background-color: #bf033b;

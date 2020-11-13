@@ -316,9 +316,12 @@
             $d_email=$_POST['d_email'];
             $d_add=$_POST['d_add'];
             $d_phone=$_POST['d_phone'];
+            $d_pass_1=$_POST['d_pass_1'];
+            $d_pass_2=$_POST['d_pass_2'];
+            $d_pass=md5($d_pass_1);
 
-            $add_deli=$con->prepare("INSERT INTO deliver(d_name, d_nic, d_img, d_email, d_add, d_phone, d_date)
-                                    VALUES('$d_name', '$d_nic', '$d_img', '$d_email', '$d_add', '$d_phone', NOW())");
+            $add_deli=$con->prepare("INSERT INTO deliver(d_name, d_nic, d_img, d_email, d_add, d_phone,d_pass, d_date)
+                                    VALUES('$d_name', '$d_nic', '$d_img', '$d_email', '$d_add', '$d_phone','$d_pass', NOW())");
 
             if($add_deli->execute()){
                 echo "<script>alert('Deliver Details Added Successfully !')</script>";
@@ -495,6 +498,9 @@
 
           $sub_total=$row_pro['pro_price'] * $row_cart['qnty'];
           // need a while loop
+          $i=1;
+
+          while($row=$fetch_pro->fetch()):
             echo "<tr>
                     <td style='min-width:50px'>".$i++."</td>
                     <td style='min-width:50px'>".$row_user['u_id']."</td>
@@ -511,13 +517,39 @@
                     <td>".$sub_total."/=</td>
 
                  </tr>";
-        }
+                 endwhile;
         else{
           echo "<center><h2>Nothing To Display.</br>
                             No One Order Foods From Your Shop....!!!</h2></center>";
         }
+        }
+        
     }
 
+    function view_user(){
+        include("include/db.php");
+
+        $fetch_pro=$con->prepare("SELECT * FROM user");
+        $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
+        $fetch_pro->execute();
+
+        $i=1;
+
+        while($row=$fetch_pro->fetch()):
+            echo "<tr>
+                    <td style='min-width:50px'>".$i++."</td>
+                    <td style='min-width:135px'>".$row['u_name']."</td>
+                    <td>".$row['u_nic']."</td>
+                    <td>".$row['u_email']."</td>
+                    <td>".$row['u_city']."</td>
+                    <td>".$row['u_add']."</td>
+                    <td>".$row['u_phone']."</td>
+                    <td style='min-width:150px'>".$row['u_reg_date']."</td>
+
+                 </tr>";
+        endwhile;
+    }
+    
     // function no_order(){
     //   include("include/db.php");
     //
@@ -549,9 +581,12 @@
             $m_email=$_POST['m_email'];
             $m_add=$_POST['m_add'];
             $m_phone=$_POST['m_phone'];
+            $m_pass_1=$_POST['m_pass_1'];
+            $m_pass_2=$_POST['m_pass_2'];
+            $m_pass=md5($m_pass_1);
 
-            $add_mana=$con->prepare("INSERT INTO manager(m_name, m_nic, m_img, m_email, m_add, m_phone, m_date)
-                                    VALUES('$m_name', '$m_nic', '$m_img', '$m_email', '$m_add', '$m_phone', NOW())");
+            $add_mana=$con->prepare("INSERT INTO manager(m_name, m_nic, m_img, m_email, m_add, m_phone,m_pass, m_date)
+                                    VALUES('$m_name', '$m_nic', '$m_img', '$m_email', '$m_add', '$m_phone','$m_pass', NOW())");
 
             if($add_mana->execute()){
                 echo "<script>alert('Manager Details Added Successfully !')</script>";

@@ -12,8 +12,9 @@
             <li><a href="indexadmin.php?viewall_products">View All Products</a></li>
             </div>
             
-            <div id="s">
+            <div id="t">
             <li><a href="indexadmin.php?view_order">View Orders</a></li>
+            <li><a href="indexadmin.php?view_user">View Users</a></li>
             </div>
             
             <div id="t">
@@ -50,6 +51,11 @@
 
         if(isset($_GET['view_order'])){
             include("view_order.php");
+        }
+
+        
+        if(isset($_GET['view_user'])){
+            include("view_user.php");
         }
 
 

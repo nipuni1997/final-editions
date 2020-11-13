@@ -27,6 +27,15 @@
                 <td><Input type="text" name="m_phone" placeholder="+94*********"/></td>
             </tr>
 
+            <tr>
+                <td>Password:</td>
+                <td><Input type="password" name="m_pass_1" placeholder="*********" /></td>
+            </tr>
+            <tr>
+                <td>Cofirm password:</td>
+                <td><Input type="password" name="m_pass_2" placeholder="*********" /></td>
+            </tr>
+
         </table>
         <center><button name="add_manager">Add Manager</button></center>
     </form>

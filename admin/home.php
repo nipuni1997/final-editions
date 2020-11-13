@@ -1,4 +1,5 @@
 <div id="bodyright">
+	<h3>Welcome to  admin Home Page </h3>
 	<div class="main-section">
 		<div class="dashbord">
 			<div class="icon-section">

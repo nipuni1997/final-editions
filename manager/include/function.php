@@ -7,7 +7,7 @@
             $add_cat=$con->prepare("INSERT INTO main_category(cat_name) VALUES ('$cat_name')");
             if($add_cat->execute()){
                 echo "<script>alert('Category Added Successfully !')</script>";
-                echo "<script>window.open('indexadmin.php?viewall_cat', '_self')</script>";
+                echo "<script>window.open('indexmanager.php?viewall_cat', '_self')</script>";
             }
             else{
                 echo "<script>alert('Category Not Added Successfully !')</script>";
@@ -42,7 +42,7 @@
             echo "<tr>
                     <td style='min-width:15px'>".$i++."</td>
                     <td>".$row['cat_name']."</td>
-                    <td style='min-width:50px'><a href='indexadmin.php?edit_cat=".$row['cat_id']."'>Edit</a></td>
+                    <td style='min-width:50px'><a href='indexmanager.php?edit_cat=".$row['cat_id']."'>Edit</a></td>
                     <td style='min-width:50px'><a href='delete_cat.php?delete_cat=".$row['cat_id']."'>Delete</a></td>
                  </tr>";
         endwhile;
@@ -54,7 +54,7 @@
 
         if(isset($_POST['add_product'])){
             $pro_name=$_POST['pro_name'];
-            $cat_id=$_POST['cat_name'];
+            $cat_id=$_POST['cat_name']; //v 12
 
             $pro_img1=$_FILES['pro_img1']['name'];
             $pro_img1_tmp=$_FILES['pro_img1']['tmp_name'];
@@ -86,7 +86,7 @@
         }
     }
 
-    function viewall_products(){
+    function viewall_products(){       //v14
         include("include/db.php");
 
         $fetch_pro=$con->prepare("SELECT * FROM products");
@@ -98,7 +98,7 @@
         while($row=$fetch_pro->fetch()):
             echo "<tr>
                     <td style='min-width:50px'>".$i++."</td>
-                    <td style='min-width:80px'><a href='indexadmin.php?edit_pro=".$row['pro_id']."'>Edit<a/></td>
+                    <td style='min-width:80px'><a href='indexmanager.php?edit_pro=".$row['pro_id']."'>Edit<a/></td>
                     <td style='min-width:80px'><a href='delete_cat.php?delete_pro=".$row['pro_id']."'>Delete<a/></td>
                     <td style='min-width:135px'>".$row['pro_name']."</td>
                     <td style='min-width:135px'>
@@ -117,7 +117,7 @@
     }
 
     function edit_cat(){
-        include("include/db.php");
+        include("include/db.php"); //v15
 
         if(isset($_GET['edit_cat'])){
             $cat_id=$_GET['edit_cat'];
@@ -144,7 +144,7 @@
 
                         if($edit_cat->execute()){
                             echo "<script>alert('Category Updated Successfully !')</script>";
-                            echo "<script>window.open('indexadmin.php?viewall_cat', '_self')</script>";
+                            echo "<script>window.open('indexmanager.php?viewall_cat', '_self')</script>";
                         }
 
 
@@ -152,7 +152,7 @@
         }
     }
 
-    function edit_pro(){
+    function edit_pro(){     //v17
         include("include/db.php");
 
         if(isset($_GET['edit_pro'])){
@@ -268,13 +268,13 @@
 
                 if($edit_pro->execute()){
                     echo "<script>alert('Product Updated Successfully !')</script>";
-                    echo "<script>window.open('indexadmin.php?viewall_products', '_self')</script>";
+                    echo "<script>window.open('indexmanager.php?viewall_products', '_self')</script>";
                 }
             }
         }
     }
 
-    function delete_cat(){
+    function delete_cat(){ 
         include("include/db.php");
 
         $delete_cat_id=$_GET['delete_cat'];
@@ -283,7 +283,7 @@
 
         if($delete_cat->execute()){
             echo "<script>alert('Category Deleted Successfully !')</script>";
-            echo "<script>window.open('indexadmin.php?viewall_cat', '_self')</script>";
+            echo "<script>window.open('indexmanager.php?viewall_cat', '_self')</script>";
         }
 
     }
@@ -296,7 +296,7 @@
 
         if($delete_pro->execute()){
             echo "<script>alert('Product Deleted Successfully !')</script>";
-            echo "<script>window.open('indexadmin.php?viewall_products', '_self')</script>";
+            echo "<script>window.open('indexmanager.php?viewall_products', '_self')</script>";
         }
     }
 
@@ -341,7 +341,7 @@
         while($row=$fetch_pro->fetch()):
             echo "<tr>
                     <td style='min-width:50px'>".$i++."</td>
-                    <td style='min-width:60px'><a href='indexadmin.php?edit_deliver=".$row['d_id']."'>Edit<a/></td>
+                    <td style='min-width:60px'><a href='indexmanager.php?edit_deliver=".$row['d_id']."'>Edit<a/></td>
                     <td style='min-width:60px'><a href='delete_cat.php?delete_deliver=".$row['d_id']."'>Delete<a/></td>
                     <td style='min-width:135px'>".$row['d_name']."</td>
                     <td>".$row['d_nic']."</td>
@@ -420,7 +420,7 @@
 
                 if($edit_deli->execute()){
                     echo "<script>alert('Delivery Person Updated Successfully !')</script>";
-                    echo "<script>window.open('indexadmin.php?view_deliver', '_self')</script>";
+                    echo "<script>window.open('indexmanager.php?view_deliver', '_self')</script>";
                 }
             }
         }
@@ -434,31 +434,33 @@
 
         if($delete_pro->execute()){
             echo "<script>alert('Deliver Person Removed Successfully !')</script>";
-            echo "<script>window.open('indexadmin.php?view_deliver', '_self')</script>";
+            echo "<script>window.open('indexmanager.php?view_deliver', '_self')</script>";
         }
     }
 
     function view_deliverstatus(){       //check it deliver Status
         include("include/db.php");
 
-        $fetch_pro=$con->prepare("SELECT * FROM deliverstatus");
-        $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
-        $fetch_pro->execute();
+        $fetch_person=$con->prepare("SELECT * FROM deliver");
+        $fetch_person->setFetchMode(PDO:: FETCH_ASSOC);
+        $fetch_person->execute();
 
         $i=1;
 
-        while($row=$fetch_pro->fetch()):
+        while($row=$fetch_person->fetch()):
             echo "<tr>
                     <td style='min-width:50px'>".$i++."</td>
-                    <td style='min-width:60px'>".$row['cart_id']."</td>
-                    <td style='min-width:60px'>".$row['user_id']."</td>
-                    <td style='min-width:135px'>".$row['user_name']."</td>
-                    <td>".$row['condi']."</td>
+                    <td style='min-width:60px'><a href='indexmanager.php?edit_deliver=".$row['d_id']."'>Edit<a/></td>
+                    <td style='min-width:60px'><a href='delete_cat.php?delete_deliver=".$row['d_id']."'>Delete<a/></td>
+                    <td style='min-width:135px'>".$row['d_name']."</td>
+                    <td>".$row['d_nic']."</td>
                     <td style='min-width:135px'>
-                        <img src='../images/condition/".$row['img']."' />
+                        <img src='../images/deliver/".$row['d_img']."' />
                     </td>
-                    <td>".$row['status']."</td>
-                    <td style='min-width:150px'>".$row['deli_date']."</td>
+                    <td>".$row['d_email']."</td>
+                    <td>".$row['d_add']."</td>
+                    <td>".$row['d_phone']."</td>
+                    <td style='min-width:150px'>".$row['d_date']."</td>
 
                  </tr>";
         endwhile;
@@ -470,51 +472,47 @@
         $fetch_cart=$con->prepare("SELECT * FROM cart");
         $fetch_cart->setFetchMode(PDO:: FETCH_ASSOC);
         $fetch_cart->execute();
-        // $row_cart=$fetch_cart->fetch();
+        $row_cart=$fetch_cart->fetch();
+
         // $id1=$row_cart['pro_id'];
-        // $id2=$row_cart['userid'];
         $row_check=$fetch_cart->rowCount();
 
-        $fetch_user=$con->prepare("SELECT u_id, u_name FROM user"); // WHERE u_id='$id2'
+        $fetch_user=$con->prepare("SELECT u_id FROM user");
         $fetch_user->setFetchMode(PDO:: FETCH_ASSOC);
         $fetch_user->execute();
         $row_user=$fetch_user->fetch();
 
 
+
         if($row_check > 0){
+          $id1=$row_cart['pro_id'];
+          // $id2=$row_cart['userid'];
 
-            $i=1;
+          $fetch_pro=$con->prepare("SELECT pro_id, pro_name, pro_img1, pro_weight, pro_price FROM products WHERE pro_id='$id1'");
+          $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
+          $fetch_pro->execute();
+          $row_pro=$fetch_pro->fetch();
 
-            while($row_cart=$fetch_cart->fetch()):
-                $id1=$row_cart['pro_id'];
+          $i=1;
 
-                $fetch_pro=$con->prepare("SELECT pro_id, pro_name, pro_img1, pro_weight, pro_price FROM products WHERE pro_id='$id1'");
-                $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
-                $fetch_pro->execute();
-                $row_pro=$fetch_pro->fetch();
+          $sub_total=$row_pro['pro_price'] * $row_cart['qnty'];
+          // need a while loop
+            echo "<tr>
+                    <td style='min-width:50px'>".$i++."</td>
+                    <td style='min-width:50px'>".$row_user['u_id']."</td>
+                    <td style='min-width:50px'>".$row_cart['cart_id']."</td>
+                    <td style='min-width:50px'>".$row_pro['pro_id']."</td>
+                    <td style='min-width:150px'>".$row_pro['pro_name']."</td>
+                    <td style='min-width:135px'>
+                        <img src='../images/pro_img/".$row_pro['pro_img1']."' />
+                    </td>
+                    <td>".$row_pro['pro_weight']."</td>
+                    <td>".$row_pro['pro_price']."/=</td>
+                    <td>".$row_cart['qnty']."</td>
+                    <td>".$row_cart['urgent']."</td>
+                    <td>".$sub_total."/=</td>
 
-                $sub_total=$row_pro['pro_price'] * $row_cart['qnty'];
-
-                echo "<tr>
-                        <td style='min-width:50px'>".$i++."</td>
-                        <td style='min-width:50px'>".$row_user['u_id']."</td>
-                        <td style='min-width:130px'>".$row_user['u_name']."</td>
-                        <td style='min-width:50px'>".$row_cart['cart_id']."</td>
-                        <td style='min-width:50px'>".$row_pro['pro_id']."</td>
-                        <td style='min-width:150px'>".$row_cart['addDate']."</td>
-                        <td style='min-width:150px'>".$row_pro['pro_name']."</td>
-                        <td style='min-width:135px'>
-                            <img src='../images/pro_img/".$row_pro['pro_img1']."' />
-                        </td>
-                        <td>".$row_pro['pro_weight']."</td>
-                        <td>".$row_pro['pro_price']."/=</td>
-                        <td>".$row_cart['qnty']."</td>
-                        <td>".$row_cart['urgent']."</td>
-                        <td>".$sub_total."/=</td>
-
-                    </tr>";
-
-            endwhile;
+                 </tr>";
         }
         else{
           echo "<center><h2>Nothing To Display.</br>
@@ -536,174 +534,4 @@
     //     echo "string";
     //   }
     // }
-
-    function add_manager(){
-        include("include/db.php");
-
-        if(isset($_POST['add_manager'])){
-            $m_name=$_POST['m_name'];
-            // $cat_id=$_POST['cat_name'];
-            $m_nic=$_POST['m_nic'];
-
-            $m_img=$_FILES['m_img']['name'];
-            $m_img_tmp=$_FILES['m_img']['tmp_name'];
-
-            move_uploaded_file($m_img_tmp, "../images/manager/$m_img");    //saving the uploaded images from the given path
-
-            $m_email=$_POST['m_email'];
-            $m_add=$_POST['m_add'];
-            $m_phone=$_POST['m_phone'];
-
-            $add_mana=$con->prepare("INSERT INTO manager(m_name, m_nic, m_img, m_email, m_add, m_phone, m_date)
-                                    VALUES('$m_name', '$m_nic', '$m_img', '$m_email', '$m_add', '$m_phone', NOW())");
-
-            if($add_mana->execute()){
-                echo "<script>alert('Manager Details Added Successfully !')</script>";
-            }
-            else{
-                echo "<script>alert('Manager Details Not Added Successfully !')</script>";
-            }
-        }
-    }
-
-    function view_manager(){
-        include("include/db.php");
-
-        $fetch_pro=$con->prepare("SELECT * FROM manager");
-        $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
-        $fetch_pro->execute();
-
-        $i=1;
-
-        while($row=$fetch_pro->fetch()):
-            echo "<tr>
-                    <td style='min-width:50px'>".$i++."</td>
-                    <td style='min-width:60px'><a href='indexadmin.php?edit_manager=".$row['m_id']."'>Edit<a/></td>
-                    <td style='min-width:60px'><a href='delete_cat.php?delete_manager=".$row['m_id']."'>Delete<a/></td>
-                    <td style='min-width:135px'>".$row['m_name']."</td>
-                    <td>".$row['m_nic']."</td>
-                    <td style='min-width:135px'>
-                        <img src='../images/manager/".$row['m_img']."' />
-                    </td>
-                    <td>".$row['m_email']."</td>
-                    <td>".$row['m_add']."</td>
-                    <td>".$row['m_phone']."</td>
-                    <td style='min-width:150px'>".$row['m_date']."</td>
-
-                 </tr>";
-        endwhile;
-    }
-
-    function edit_manager(){
-        include("include/db.php");
-
-        if(isset($_GET['edit_manager'])){
-            $m_id=$_GET['edit_manager'];
-
-            $fetch_pro=$con->prepare("SELECT * FROM manager WHERE m_id='$m_id'");
-            $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
-            $fetch_pro->execute();
-            $row=$fetch_pro->fetch();
-
-            echo "<form method='post' enctype='multipart/form-data'>
-                <table>
-                    <tr>
-                        <td>Edit Name:</td>
-                        <td><Input type='text' name='m_name' value='".$row['m_name']."' /></td>
-                    </tr>
-                    <tr>
-                        <td>Edit NIC:</td>
-                        <td><Input type='text' name='m_nic' value='".$row['m_nic']."' /></td>
-                    </tr>
-                    <tr>
-                        <td>Update Person Image:</td>
-                        <td>
-                            <Input type='file' name='m_img' />
-                            <img src='../images/manager/".$row['m_img']."' style='width:60px; height:60px' />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Edit Email:</td>
-                        <td><Input type='text' name='m_email' value='".$row['m_email']."' /></td>
-                    </tr>
-                    <tr>
-                        <td>Edit Address:</td>
-                        <td><Input type='text' name='m_add' value='".$row['m_add']."' /></td>
-                    </tr>
-                    <tr>
-                        <td>Edit Contact No:</td>
-                        <td><Input type='text' name='m_phone' value='".$row['m_phone']."' /></td>
-                    </tr>
-
-                </table>
-                <center><button name='edit_manager'>Edit Manager</button></center>
-            </form>";
-
-            if(isset($_POST['edit_manager'])){
-                $m_name=$_POST['m_name'];
-
-                $m_nic=$_POST['m_nic'];
-
-                $m_img=$_FILES['m_img']['name'];
-                $m_img_tmp=$_FILES['m_img']['tmp_name'];
-                move_uploaded_file($m_img_tmp, "../images/manager/$m_img");
-
-                $m_email=$_POST['m_email'];
-                $m_add=$_POST['m_add'];
-                $m_phone=$_POST['m_phone'];
-
-                $edit_mana=$con->prepare("UPDATE manager SET m_name='$m_name', m_nic='$m_nic', m_img='$m_img',  m_email='$m_email', m_add='$m_add',
-                                                 m_phone='$m_phone' WHERE m_id='$m_id'");
-
-                if($edit_mana->execute()){
-                    echo "<script>alert('Manager Updated Successfully !')</script>";
-                    echo "<script>window.open('indexadmin.php?view_manager', '_self')</script>";
-                }
-            }
-        }
-    }
-
-    function delete_manager(){
-        include("include/db.php");
-
-        $delete_manager_id=$_GET['delete_manager'];
-        $delete_mana=$con->prepare("DELETE FROM manager WHERE m_id='$delete_manager_id'");
-
-        if($delete_mana->execute()){
-            echo "<script>alert('Manager Removed Successfully !')</script>";
-            echo "<script>window.open('indexadmin.php?view_manager', '_self')</script>";
-        }
-    }
-
-    function view_status(){
-        include("include/db.php");
-
-        $fetch_pro=$con->prepare("SELECT * FROM deliverstatus");
-        $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
-        $fetch_pro->execute();
-
-        $fetch_pro1=$con->prepare("SELECT d_id FROM deliver");
-        $fetch_pro1->setFetchMode(PDO:: FETCH_ASSOC);
-        $fetch_pro1->execute();
-        $row1=$fetch_pro1->fetch();
-
-        $i=1;
-
-        while($row=$fetch_pro->fetch()):
-            echo "<tr>
-                    <td style='min-width:50px'>".$i++."</td>
-                    <td style='min-width:60px'>".$row1['d_id']."</td>
-                    <td style='min-width:60px'>".$row['cart_id']."</td>
-                    <td style='min-width:60px'>".$row['user_id']."</td>
-                    <td style='min-width:135px'>".$row['user_name']."</td>
-                    <td>".$row['condi']."</td>
-                    <td style='min-width:135px'>
-                        <img src='../images/condition/".$row['img']."' />
-                    </td>
-                    <td>".$row['status']."</td>
-                    <td style='min-width:150px'>".$row['deli_date']."</td>
-
-                 </tr>";
-        endwhile;
-    }
 ?>

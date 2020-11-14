@@ -8,7 +8,12 @@
       if(!isset($_GET['view_manager'])){
       if(!isset($_GET['add_deliver'])){
       if(!isset($_GET['view_deliver'])){
+
+      if(!isset($_GET['view_status'])){
+      // if(!isset($_GET['view_deliverstatus'])){
+
        if(!isset($_GET['view_deliverstatus'])){
+
 ?>
 
 <div id="bodyright">
@@ -29,6 +34,11 @@
 </div>
 
 <?php
+
+} } } } } } } } } }
+//}
+
 } } } } } } } }}
 }
+
 ?>

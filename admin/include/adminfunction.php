@@ -441,24 +441,26 @@
     function view_deliverstatus(){       //check it deliver Status
         include("include/db.php");
 
-        $fetch_pro=$con->prepare("SELECT * FROM deliverstatus");
-        $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
-        $fetch_pro->execute();
+        $fetch_person=$con->prepare("SELECT * FROM deliver");
+        $fetch_person->setFetchMode(PDO:: FETCH_ASSOC);
+        $fetch_person->execute();
 
         $i=1;
 
-        while($row=$fetch_pro->fetch()):
+        while($row=$fetch_person->fetch()):
             echo "<tr>
                     <td style='min-width:50px'>".$i++."</td>
-                    <td style='min-width:60px'>".$row['cart_id']."</td>
-                    <td style='min-width:60px'>".$row['user_id']."</td>
-                    <td style='min-width:135px'>".$row['user_name']."</td>
-                    <td>".$row['condi']."</td>
+                    <td style='min-width:60px'><a href='indexadmin.php?edit_deliver=".$row['d_id']."'>Edit<a/></td>
+                    <td style='min-width:60px'><a href='delete_cat.php?delete_deliver=".$row['d_id']."'>Delete<a/></td>
+                    <td style='min-width:135px'>".$row['d_name']."</td>
+                    <td>".$row['d_nic']."</td>
                     <td style='min-width:135px'>
-                        <img src='../images/condition/".$row['img']."' />
+                        <img src='../images/deliver/".$row['d_img']."' />
                     </td>
-                    <td>".$row['status']."</td>
-                    <td style='min-width:150px'>".$row['deli_date']."</td>
+                    <td>".$row['d_email']."</td>
+                    <td>".$row['d_add']."</td>
+                    <td>".$row['d_phone']."</td>
+                    <td style='min-width:150px'>".$row['d_date']."</td>
 
                  </tr>";
         endwhile;

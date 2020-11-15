@@ -117,6 +117,7 @@ body{
     background: rgb(112, 0, 0);
 }
 #bodyright{
+   
     padding-bottom: 1%;
     width: 74%;
     min-height: 515px;
@@ -162,7 +163,7 @@ body{
     border-radius: 5px;
 }
 #bodyright form table tr td{
-    padding-left: 1%;
+    padding-left: 1.5%;
     /* width:50%; */
     min-width: 135px;
     height: 35px;

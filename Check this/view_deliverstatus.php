@@ -11,7 +11,7 @@
                 <th>Deliver Status</th>
             </tr>
 
-            <?php include("include/adminfunction.php"); echo view_deliverstatus();?>
+            <?php include("include/function.php"); echo view_deliverstatus();?>
 
         </table>
     </form>

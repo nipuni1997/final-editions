@@ -11,7 +11,7 @@
                 <th>Condition</th>
                 <th>Image</th>
                 <th>Status</th>
-                <th>Deliver Date Date</th>
+                <th>Date And Time</th>
             </tr>
 
             <?php include("include/adminfunction.php"); echo view_status();?>

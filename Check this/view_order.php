@@ -6,11 +6,9 @@
                 <!-- <th>No.</th> -->
                 <th>Order ID</th>     <!--increment---->
                 <th>User ID</th>      <!--user---->
-                <th>User Name</th>
                 <th>cart ID</th>      <!--cart---->
                 <th>Product ID</th>   <!--products---->
-                <th>Added Date</th> <!--products---->
-                <th>Product Name</th>
+                <th>Product Name</th> <!--products---->
                 <th>Image</th>        <!--products---->
                 <th>Weight</th>       <!--products---->
                 <th>Price (RS)</th>    <!--products---->
@@ -19,7 +17,7 @@
                 <th>Sub Total (RS)</th>
             </tr>
 
-            <?php include("include/adminfunction.php");
+            <?php include("include/function.php");
                   // echo no_order();
                   echo view_order();
 

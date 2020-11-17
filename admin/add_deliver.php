@@ -4,36 +4,36 @@
         <table>
             <tr>
                 <td>Enter Name Of The Delivery Person:</td>
-                <td><Input type="text" name="d_name" /></td>
+                <td><Input type="text" name="d_name" placeholder="Name" required/></td>
             </tr>
             <tr>
                 <td>Enter NIC No:</td>
-                <td><Input type="text" name="d_nic" placeholder="*********V"/></td>
+                <td><Input type="text" name="d_nic" placeholder="*********V" required/></td>
             </tr>
             <tr>
                 <td>Add Image:</td>
-                <td><Input type="file" name="d_img" /></td>
+                <td><Input type="file" name="d_img" required/></td>
             </tr>
             <tr>
                 <td>Enter Email:</td>
-                <td><Input type="text" name="d_email" /></td>
+                <td><Input type="text" name="d_email" placeholder="Email" required/></td>
             </tr>
             <tr>
                 <td>Address:</td>
-                <td><textarea type="text" name="d_add" id="" cols="" rows="4" placeholder="Address Here ...."></textarea></td>
+                <td><textarea type="text" name="d_add" id="" cols="" rows="4" placeholder="Address Here ...."required></textarea></td>
             </tr>
             <tr>
                 <td>Contact No:</td>
-                <td><Input type="text" name="m_phone" placeholder="+94*********"/></td>
+                <td><Input type="text" name="m_phone" placeholder="+94*********" required/></td>
             </tr>
 
             <tr>
                 <td>Password:</td>
-                <td><Input type="password" name="m_pass_1" placeholder="*********" /></td>
+                <td><Input type="password" name="m_pass_1" placeholder="*********" required/></td>
             </tr>
             <tr>
                 <td>Cofirm password:</td>
-                <td><Input type="password" name="m_pass_2" placeholder="*********" /></td>
+                <td><Input type="password" name="m_pass_2" placeholder="*********" required/></td>
             </tr>
 
 

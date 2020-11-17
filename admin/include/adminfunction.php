@@ -131,7 +131,7 @@
                         <table>
                             <tr>
                                 <td>Edit Category Name:</td>
-                                <td><Input type='text' name='edit_cat_name' value='".$row['cat_name']."' /></td>
+                                <td><Input type='text' name='edit_cat_name' value='".$row['cat_name']."' required placeholder='Category Name' /></td>
                             </tr>
                         </table>
                         <center><button name='edit_cat'>Edit Category</button></center>
@@ -175,7 +175,7 @@
                 <table>
                     <tr>
                         <td>Edit Product Name:</td>
-                        <td><Input type='text' name='pro_name' value='".$row['pro_name']."' /></td>
+                        <td><Input type='text' name='pro_name' value='".$row['pro_name']."' required /></td>
                     </tr>
                     <tr>
                         <td>Select Category Name:</td>
@@ -190,50 +190,50 @@
                     <tr>
                         <td>Update Product Image 1:</td>
                         <td>
-                            <Input type='file' name='pro_img1' />
+                            <Input type='file' name='pro_img1'required />
                             <img src='../images/pro_img/".$row['pro_img1']."' style='width:60px; height:60px' />
                         </td>
                     </tr>
                     <tr>
                         <td>Update Product Image 2:</td>
                         <td>
-                            <Input type='file' name='pro_img2' />
+                            <Input type='file' name='pro_img2'required />
                             <img src='../images/pro_img/".$row['pro_img2']."' style='width:60px; height:60px' />
                         </td>
                     </tr>
                     <!-- <tr>
                         <td>Select Product Image 3:</td>
-                        <td><Input type='file' name='pro_img3' /></td>
+                        <td><Input type='file' name='pro_img3' required/></td>
                     </tr>
                     <tr>
                         <td>Select Product Image 4:</td>
-                        <td><Input type='file' name='pro_img4' /></td>
+                        <td><Input type='file' name='pro_img4'required /></td>
                     </tr> -->
 
                     <tr>
                         <td>Edit Weight:</td>
-                        <td><Input type='text' name='pro_weight' value='".$row['pro_weight']."' /></td>
+                        <td><Input type='text' name='pro_weight' value='".$row['pro_weight']."'required /></td>
                     </tr>
                     <tr>
                         <td>Edit Description:</td>
-                        <td><Input type='text' name='pro_description' value='".$row['pro_description']."' /></td>
+                        <td><Input type='text' name='pro_description' value='".$row['pro_description']."'required /></td>
                     </tr>
                     <tr>
                         <td>Edit More Description:</td>
-                        <td><Input type='text' name='pro_moredescription' value='".$row['pro_moredescription']."' /></td>
+                        <td><Input type='text' name='pro_moredescription' value='".$row['pro_moredescription']."'required /></td>
                     </tr>
 
                     <tr>
                         <td>Update Price:</td>
-                        <td><Input type='text' name='pro_price' value='".$row['pro_price']."' /></td>
+                        <td><Input type='text' name='pro_price' value='".$row['pro_price']."'required /></td>
                     </tr>
                     <!-- <tr>
                         <td>Enter Product ID:</td>
-                        <td><Input type='text' name='pro_key' /></td>
+                        <td><Input type='text' name='pro_key'required /></td>
                     </tr> -->
                     <tr>
                         <td>Edit Keyword:</td>
-                        <td><Input type='text' name='pro_keyword' value='".$row['pro_keyword']."' /></td>
+                        <td><Input type='text' name='pro_keyword' value='".$row['pro_keyword']."'required /></td>
                     </tr>
 
                 </table>
@@ -375,30 +375,30 @@
                 <table>
                     <tr>
                         <td>Edit Name:</td>
-                        <td><Input type='text' name='d_name' value='".$row['d_name']."' /></td>
+                        <td><Input type='text' name='d_name' value='".$row['d_name']."' required/></td>
                     </tr>
                     <tr>
                         <td>Edit NIC:</td>
-                        <td><Input type='text' name='d_nic' value='".$row['d_nic']."' /></td>
+                        <td><Input type='text' name='d_nic' value='".$row['d_nic']."'required /></td>
                     </tr>
                     <tr>
                         <td>Update Person Image:</td>
                         <td>
-                            <Input type='file' name='d_img' />
+                            <Input type='file' name='d_img' required/>
                             <img src='../images/deliver/".$row['d_img']."' style='width:60px; height:60px' />
                         </td>
                     </tr>
                     <tr>
                         <td>Edit Email:</td>
-                        <td><Input type='text' name='d_email' value='".$row['d_email']."' /></td>
+                        <td><Input type='text' name='d_email' value='".$row['d_email']."' required/></td>
                     </tr>
                     <tr>
                         <td>Edit Address:</td>
-                        <td><Input type='text' name='d_add' value='".$row['d_add']."' /></td>
+                        <td><Input type='text' name='d_add' value='".$row['d_add']."' required/></td>
                     </tr>
                     <tr>
                         <td>Edit Contact No:</td>
-                        <td><Input type='text' name='d_phone' value='".$row['d_phone']."' /></td>
+                        <td><Input type='text' name='d_phone' value='".$row['d_phone']."' required/></td>
                     </tr>
 
                 </table>
@@ -634,30 +634,30 @@
                 <table>
                     <tr>
                         <td>Edit Name:</td>
-                        <td><Input type='text' name='m_name' value='".$row['m_name']."' /></td>
+                        <td><Input type='text' name='m_name' value='".$row['m_name']."'required /></td>
                     </tr>
                     <tr>
                         <td>Edit NIC:</td>
-                        <td><Input type='text' name='m_nic' value='".$row['m_nic']."' /></td>
+                        <td><Input type='text' name='m_nic' value='".$row['m_nic']."' required/></td>
                     </tr>
                     <tr>
                         <td>Update Person Image:</td>
                         <td>
-                            <Input type='file' name='m_img' />
+                            <Input type='file' name='m_img' required/>
                             <img src='../images/manager/".$row['m_img']."' style='width:60px; height:60px' />
                         </td>
                     </tr>
                     <tr>
                         <td>Edit Email:</td>
-                        <td><Input type='text' name='m_email' value='".$row['m_email']."' /></td>
+                        <td><Input type='text' name='m_email' value='".$row['m_email']."' required/></td>
                     </tr>
                     <tr>
                         <td>Edit Address:</td>
-                        <td><Input type='text' name='m_add' value='".$row['m_add']."' /></td>
+                        <td><Input type='text' name='m_add' value='".$row['m_add']."'required /></td>
                     </tr>
                     <tr>
                         <td>Edit Contact No:</td>
-                        <td><Input type='text' name='m_phone' value='".$row['m_phone']."' /></td>
+                        <td><Input type='text' name='m_phone' value='".$row['m_phone']."'required /></td>
                     </tr>
 
                 </table>

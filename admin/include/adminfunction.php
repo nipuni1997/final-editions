@@ -54,7 +54,7 @@
 
         if(isset($_POST['add_product'])){
             $pro_name=$_POST['pro_name'];
-            $cat_id=$_POST['cat_name']; //v 12
+            $cat_id=$_POST['cat_name'];
 
             $pro_img1=$_FILES['pro_img1']['name'];
             $pro_img1_tmp=$_FILES['pro_img1']['tmp_name'];
@@ -86,7 +86,7 @@
         }
     }
 
-    function viewall_products(){       //v14
+    function viewall_products(){
         include("include/db.php");
 
         $fetch_pro=$con->prepare("SELECT * FROM products");
@@ -117,7 +117,7 @@
     }
 
     function edit_cat(){
-        include("include/db.php"); //v15
+        include("include/db.php");
 
         if(isset($_GET['edit_cat'])){
             $cat_id=$_GET['edit_cat'];
@@ -152,7 +152,7 @@
         }
     }
 
-    function edit_pro(){     //v17
+    function edit_pro(){
         include("include/db.php");
 
         if(isset($_GET['edit_pro'])){
@@ -243,7 +243,7 @@
 
             if(isset($_POST['edit_product'])){
                 $pro_name=$_POST['pro_name'];
-                $cat_id=$_POST['cat_name'];//v 18
+                $cat_id=$_POST['cat_name'];
 
                 $pro_img1=$_FILES['pro_img1']['name'];
                 $pro_img1_tmp=$_FILES['pro_img1']['tmp_name'];
@@ -274,7 +274,7 @@
         }
     }
 
-    function delete_cat(){  //v19
+    function delete_cat(){
         include("include/db.php");
 
         $delete_cat_id=$_GET['delete_cat'];
@@ -444,24 +444,26 @@
     function view_deliverstatus(){       //check it deliver Status
         include("include/db.php");
 
-        $fetch_pro=$con->prepare("SELECT * FROM deliverstatus");
-        $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
-        $fetch_pro->execute();
+        $fetch_person=$con->prepare("SELECT * FROM deliver");
+        $fetch_person->setFetchMode(PDO:: FETCH_ASSOC);
+        $fetch_person->execute();
 
         $i=1;
 
-        while($row=$fetch_pro->fetch()):
+        while($row=$fetch_person->fetch()):
             echo "<tr>
                     <td style='min-width:50px'>".$i++."</td>
-                    <td style='min-width:60px'>".$row['cart_id']."</td>
-                    <td style='min-width:60px'>".$row['user_id']."</td>
-                    <td style='min-width:135px'>".$row['user_name']."</td>
-                    <td>".$row['condi']."</td>
+                    <td style='min-width:60px'><a href='indexadmin.php?edit_deliver=".$row['d_id']."'>Edit<a/></td>
+                    <td style='min-width:60px'><a href='delete_cat.php?delete_deliver=".$row['d_id']."'>Delete<a/></td>
+                    <td style='min-width:135px'>".$row['d_name']."</td>
+                    <td>".$row['d_nic']."</td>
                     <td style='min-width:135px'>
-                        <img src='../images/condition/".$row['img']."' />
+                        <img src='../images/deliver/".$row['d_img']."' />
                     </td>
-                    <td>".$row['status']."</td>
-                    <td style='min-width:150px'>".$row['deli_date']."</td>
+                    <td>".$row['d_email']."</td>
+                    <td>".$row['d_add']."</td>
+                    <td>".$row['d_phone']."</td>
+                    <td style='min-width:150px'>".$row['d_date']."</td>
 
                  </tr>";
         endwhile;
@@ -473,51 +475,64 @@
         $fetch_cart=$con->prepare("SELECT * FROM cart");
         $fetch_cart->setFetchMode(PDO:: FETCH_ASSOC);
         $fetch_cart->execute();
-        $row_cart=$fetch_cart->fetch();
-
+        // $row_cart=$fetch_cart->fetch();
         // $id1=$row_cart['pro_id'];
+        // $id2=$row_cart['userid'];
         $row_check=$fetch_cart->rowCount();
 
-        $fetch_user=$con->prepare("SELECT u_id FROM user");
+        $fetch_user=$con->prepare("SELECT u_id, u_name FROM user"); // WHERE u_id='$id2'
         $fetch_user->setFetchMode(PDO:: FETCH_ASSOC);
         $fetch_user->execute();
         $row_user=$fetch_user->fetch();
 
 
-
         if($row_check > 0){
-          $id1=$row_cart['pro_id'];
-          // $id2=$row_cart['userid'];
 
-          $fetch_pro=$con->prepare("SELECT pro_id, pro_name, pro_img1, pro_weight, pro_price FROM products WHERE pro_id='$id1'");
-          $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
-          $fetch_pro->execute();
-          $row_pro=$fetch_pro->fetch();
+            $i=1;
 
-          $i=1;
+            while($row_cart=$fetch_cart->fetch()):
+                $id1=$row_cart['pro_id'];
 
-          $sub_total=$row_pro['pro_price'] * $row_cart['qnty'];
-          // need a while loop
-            echo "<tr>
-                    <td style='min-width:50px'>".$i++."</td>
-                    <td style='min-width:50px'>".$row_user['u_id']."</td>
-                    <td style='min-width:50px'>".$row_cart['cart_id']."</td>
-                    <td style='min-width:50px'>".$row_pro['pro_id']."</td>
-                    <td style='min-width:150px'>".$row_pro['pro_name']."</td>
-                    <td style='min-width:135px'>
-                        <img src='../images/pro_img/".$row_pro['pro_img1']."' />
-                    </td>
-                    <td>".$row_pro['pro_weight']."</td>
-                    <td>".$row_pro['pro_price']."/=</td>
-                    <td>".$row_cart['qnty']."</td>
-                    <td>".$row_cart['urgent']."</td>
-                    <td>".$sub_total."/=</td>
+                $fetch_pro=$con->prepare("SELECT pro_id, pro_name, pro_img1, pro_weight, pro_price FROM products WHERE pro_id='$id1'");
+                $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
+                $fetch_pro->execute();
+                $row_pro=$fetch_pro->fetch();
+
 
                  </tr>";
                 }  
         
         
         
+
+                $sub_total=$row_pro['pro_price'] * $row_cart['qnty'];
+
+                echo "<tr>
+                        <td style='min-width:50px'>".$i++."</td>
+                        <td style='min-width:50px'>".$row_user['u_id']."</td>
+                        <td style='min-width:130px'>".$row_user['u_name']."</td>
+                        <td style='min-width:50px'>".$row_cart['cart_id']."</td>
+                        <td style='min-width:50px'>".$row_pro['pro_id']."</td>
+                        <td style='min-width:150px'>".$row_cart['addDate']."</td>
+                        <td style='min-width:150px'>".$row_pro['pro_name']."</td>
+                        <td style='min-width:135px'>
+                            <img src='../images/pro_img/".$row_pro['pro_img1']."' />
+                        </td>
+                        <td>".$row_pro['pro_weight']."</td>
+                        <td>".$row_pro['pro_price']."/=</td>
+                        <td>".$row_cart['qnty']."</td>
+                        <td>".$row_cart['urgent']."</td>
+                        <td>".$sub_total."/=</td>
+
+                    </tr>";
+
+            endwhile;
+        }
+        else{
+          echo "<center><h2>Nothing To Display.</br>
+                            No One Order Foods From Your Shop....!!!</h2></center>";
+        }
+
     }
 
     function view_user(){
@@ -698,5 +713,37 @@
             echo "<script>alert('Manager Removed Successfully !')</script>";
             echo "<script>window.open('indexadmin.php?view_manager', '_self')</script>";
         }
+    }
+
+    function view_status(){
+        include("include/db.php");
+
+        $fetch_pro=$con->prepare("SELECT * FROM deliverstatus");
+        $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
+        $fetch_pro->execute();
+
+        $fetch_pro1=$con->prepare("SELECT d_id FROM deliver");
+        $fetch_pro1->setFetchMode(PDO:: FETCH_ASSOC);
+        $fetch_pro1->execute();
+        $row1=$fetch_pro1->fetch();
+
+        $i=1;
+
+        while($row=$fetch_pro->fetch()):
+            echo "<tr>
+                    <td style='min-width:50px'>".$i++."</td>
+                    <td style='min-width:60px'>".$row1['d_id']."</td>
+                    <td style='min-width:60px'>".$row['cart_id']."</td>
+                    <td style='min-width:60px'>".$row['user_id']."</td>
+                    <td style='min-width:135px'>".$row['user_name']."</td>
+                    <td>".$row['condi']."</td>
+                    <td style='min-width:135px'>
+                        <img src='../images/condition/".$row['img']."' />
+                    </td>
+                    <td>".$row['status']."</td>
+                    <td style='min-width:150px'>".$row['deli_date']."</td>
+
+                 </tr>";
+        endwhile;
     }
 ?>

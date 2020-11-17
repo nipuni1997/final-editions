@@ -1,16 +1,14 @@
-<div class="scroll" id="bodyright"> <!---11--->
-    <h3>Update Delivery Information From Here</h3>
+<div class="scroll" id="bodyright">
+    <h3>View Deliver Information From Here</h3>
     <form method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <th>No.</th>
-                <th>Cart ID</th>
-                <th>User ID</th>
-                <th>User Name</th>
-                <th>Condition</th>
-                <th>Image</th>
-                <th>Status</th>
-                <th>Deliver Date</th>
+                <th>Deliver ID</th>
+                <th>Name</th>
+                <th>NIC</th>
+                <th>Deliver Item Image</th>
+                <th>Deliver Status</th>
             </tr>
 
             <?php include("include/adminfunction.php"); echo view_deliverstatus();?>

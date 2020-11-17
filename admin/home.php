@@ -8,7 +8,7 @@
 				<p>256</p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="#">More Info </a>
 			</div>
 		</div>
 		<div class="dashbord dashbord-green">
@@ -18,7 +18,7 @@
 				<p>$ 256</p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="#">More Info </a>
 			</div>
 		</div>
 		<div class="dashbord dashbord-orange">
@@ -28,7 +28,7 @@
 				<p>9 </p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="#">More Info </a>
 			</div>
 		</div>
 		<div class="dashbord dashbord-blue">
@@ -38,7 +38,7 @@
 				<p>8</p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="">More Info </a>
 			</div>
 		</div>
 		<div class="dashbord dashbord-red">
@@ -48,7 +48,7 @@
 				<p> 24</p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="#">More Info </a>
 			</div>
 		</div>
 		<div class="dashbord dashbord-skyblue">
@@ -58,7 +58,7 @@
 				<p>3</p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="#">More Info </a>
 			</div>
 		</div>
 	</div>

@@ -33,7 +33,7 @@ body{
 #bodyleft{
     /* background-image: ; */
     width: 25%;
-    height: 600px;
+    height: 580px;
     margin-top: 10px;
     margin-left: 0px;
     border-radius: 3px;
@@ -119,10 +119,10 @@ body{
 #bodyright{
     padding-bottom: 1%;
     width: 74%;
-    min-height: 515px;
+    min-height: 580px;
     /* margin-top: 10px;
     margin-left: 10px; */
-    margin: 10px 0px 10px 10px;
+    margin: 10px 0px 10px 5px;
     border-radius: 3px;
     float: left;
     background-color: #bf033b;
@@ -162,7 +162,7 @@ body{
     border-radius: 5px;
 }
 #bodyright form table tr td{
-    padding-left: 1%;
+    padding-left: 1.5%;
     /* width:50%; */
     min-width: 135px;
     height: 35px;
@@ -308,3 +308,4 @@ background-color:#8E44AD;
 .dashbord-skyblue .detail-section{
 background-color:#803D9B;
 }
+

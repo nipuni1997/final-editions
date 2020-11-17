@@ -19,7 +19,7 @@
         <table>
             <tr>
                 <td>Enter Category Name:</td>
-                <td><Input type="text" name="cat_name" /></td>
+                <td><Input type="text" name="cat_name" placeholder="New Category" required /></td>
             </tr>
         </table>
         <center><button name="add_cat">Add Category</button></center>

@@ -4,27 +4,36 @@
         <table>
             <tr>
                 <td>Enter Name Of The Manager:</td>
-                <td><Input type="text" name="m_name" /></td>
+                <td><Input type="text" name="m_name" placeholder="Name" required/></td>
             </tr>
             <tr>
                 <td>Enter NIC No:</td>
-                <td><Input type="text" name="m_nic" placeholder="*********V"/></td>
+                <td><Input type="text" name="m_nic" placeholder="*********V" size="10" required/></td>
             </tr>
             <tr>
                 <td>Add Image:</td>
-                <td><Input type="file" name="m_img" /></td>
+                <td><Input type="file" name="m_img" required/></td>
             </tr>
             <tr>
                 <td>Enter Email:</td>
-                <td><Input type="text" name="m_email" /></td>
+                <td><Input type="text" name="m_email" placeholder="Email" required/></td>
             </tr>
             <tr>
                 <td>Address:</td>
-                <td><textarea type="text" name="m_add" id="" cols="" rows="4" placeholder="Address Here ...."></textarea></td>
+                <td><textarea type="text" name="m_add" id="" cols="" rows="4" placeholder="Address Here ...."required></textarea></td>
             </tr>
             <tr>
                 <td>Contact No:</td>
-                <td><Input type="text" name="m_phone" placeholder="+94*********"/></td>
+                <td><Input type="text" name="m_phone" placeholder="+94*********" required/></td>
+            </tr>
+
+            <tr>
+                <td>Password:</td>
+                <td><Input type="password" name="m_pass_1" placeholder="*********" required/></td>
+            </tr>
+            <tr>
+                <td>Cofirm password:</td>
+                <td><Input type="password" name="m_pass_2" placeholder="*********" required/></td>
             </tr>
 
         </table>

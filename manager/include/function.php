@@ -54,7 +54,7 @@
 
         if(isset($_POST['add_product'])){
             $pro_name=$_POST['pro_name'];
-            $cat_id=$_POST['cat_name']; //v 12
+            $cat_id=$_POST['cat_name']; 
 
             $pro_img1=$_FILES['pro_img1']['name'];
             $pro_img1_tmp=$_FILES['pro_img1']['tmp_name'];
@@ -86,7 +86,7 @@
         }
     }
 
-    function viewall_products(){       //v14
+    function viewall_products(){       
         include("include/db.php");
 
         $fetch_pro=$con->prepare("SELECT * FROM products");
@@ -117,7 +117,7 @@
     }
 
     function edit_cat(){
-        include("include/db.php"); //v15
+        include("include/db.php"); 
 
         if(isset($_GET['edit_cat'])){
             $cat_id=$_GET['edit_cat'];
@@ -152,7 +152,7 @@
         }
     }
 
-    function edit_pro(){     //v17
+    function edit_pro(){     
         include("include/db.php");
 
         if(isset($_GET['edit_pro'])){
@@ -239,7 +239,7 @@
                 </table>
                 <center><button name='edit_product'>Edit Product</button></center>
             </form>";
-            //<option value='".$row['cat_id']."'></option> line 291 under select category name
+            
 
             if(isset($_POST['edit_product'])){
                 $pro_name=$_POST['pro_name'];

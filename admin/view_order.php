@@ -6,9 +6,11 @@
                 <!-- <th>No.</th> -->
                 <th>Order ID</th>     <!--increment---->
                 <th>User ID</th>      <!--user---->
+                <th>User Name</th>
                 <th>cart ID</th>      <!--cart---->
                 <th>Product ID</th>   <!--products---->
-                <th>Product Name</th> <!--products---->
+                <th>Added Date</th> <!--products---->
+                <th>Product Name</th>
                 <th>Image</th>        <!--products---->
                 <th>Weight</th>       <!--products---->
                 <th>Price (RS)</th>    <!--products---->

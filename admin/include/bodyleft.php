@@ -28,7 +28,7 @@
             </div>
             
             <div id="s">
-            <li><a href="indexadmin.php?view_deliverstatus">View Deliver Information</a></li>
+            <li><a href="indexadmin.php?view_status">View Deliver Information</a></li>
             </div>
         </ul>
     </div>
@@ -73,7 +73,10 @@
         if(isset($_GET['view_deliver'])){
             include("view_deliver.php");
         }
-         if(isset($_GET['view_deliverstatus'])){
-             include("view_deliverstatus.php");
-         }
+        // if(isset($_GET['view_deliverstatus'])){
+        //     include("view_deliverstatus.php");
+        // }
+        if(isset($_GET['view_status'])){
+            include("view_status.php");
+        }
     ?>

@@ -23,7 +23,7 @@
 				</p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="#">More Info </a>
 			</div>
 		</div>
 		<div class="dashbord dashbord-green">
@@ -33,7 +33,7 @@
 				<p>$ 256</p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="#">More Info </a>
 			</div>
 		</div>
 		<div class="dashbord dashbord-orange">
@@ -43,7 +43,7 @@
 				<p>9 </p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="#">More Info </a>
 			</div>
 		</div>
 		<div class="dashbord dashbord-blue">
@@ -68,7 +68,7 @@
 				</p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="">More Info </a>
 			</div>
 		</div>
 		<div class="dashbord dashbord-red">
@@ -93,7 +93,7 @@
 				</p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="#">More Info </a>
 			</div>
 		</div>
 		<div class="dashbord dashbord-skyblue">
@@ -118,7 +118,7 @@
 					</p>
 			</div>
 			<div class="detail-section">
-				
+				<a href="#">More Info </a>
 			</div>
 		</div>
 	</div>

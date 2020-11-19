@@ -8,7 +8,7 @@
             </tr>
             <tr>
                 <td>Enter NIC No:</td>
-                <td><Input type="text" name="d_nic" placeholder="*********V" required/></td>
+                <td><Input type="text" name="d_nic" placeholder="*********V" maxlength="12"required/></td>
             </tr>
             <tr>
                 <td>Add Image:</td>
@@ -16,15 +16,15 @@
             </tr>
             <tr>
                 <td>Enter Email:</td>
-                <td><Input type="text" name="d_email" placeholder="Email" required/></td>
+                <td><Input type="email" name="d_email" placeholder="Email" required/></td>
             </tr>
             <tr>
                 <td>Address:</td>
-                <td><textarea type="text" name="d_add" id="" cols="" rows="4" placeholder="Address Here ...."required></textarea></td>
+                <td><textarea type="text" name="d_add" id="" cols="" rows="3" placeholder="Address Here ...."required></textarea></td>
             </tr>
             <tr>
                 <td>Contact No:</td>
-                <td><Input type="text" name="m_phone" placeholder="+94*********" required/></td>
+                <td><Input type="tel" name="m_phone"  placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' size='12' maxlength='12' required/></td>
             </tr>
 
             <tr>
@@ -32,7 +32,7 @@
                 <td><Input type="password" name="m_pass_1" placeholder="*********" required/></td>
             </tr>
             <tr>
-                <td>Cofirm password:</td>
+                <td>Confirm password:</td>
                 <td><Input type="password" name="m_pass_2" placeholder="*********" required/></td>
             </tr>
 

@@ -5,7 +5,22 @@
 			<div class="icon-section">
 				<i class="fa fa-users" aria-hidden="true"></i><br>
 				<small>Users</small>
-				<p>256</p>
+				<p>
+				<?php
+					$conn=new PDO("mysql:host=localhost;dbname=onecart-test","root","");
+					$result=$conn->prepare("SELECT COUNT(u_id) FROM user");
+					$result->execute();
+					
+					for($i=0;$row=$result->fetch();$i++)
+					{
+						?>
+						<tr>
+							<td><label><?php echo $row['COUNT(u_id)'];?></label></td>
+						</tr>
+						<?php   
+					}
+					?>
+				</p>
 			</div>
 			<div class="detail-section">
 				
@@ -35,7 +50,22 @@
 			<div class="icon-section">
 				<i class="fa fa-tasks" aria-hidden="true"></i><br>
 				<small>Categories</small>
-				<p>8</p>
+				<p>
+				<?php
+					$conn=new PDO("mysql:host=localhost;dbname=onecart-test","root","");
+					$result=$conn->prepare("SELECT DISTINCT COUNT(cat_id) FROM main_category");
+					$result->execute();
+					
+					for($i=0;$row=$result->fetch();$i++)
+					{
+						?>
+						<tr>
+							<td><label><?php echo $row['COUNT(cat_id)'];?></label></td>
+						</tr>
+						<?php   
+					}
+					?>
+				</p>
 			</div>
 			<div class="detail-section">
 				
@@ -45,7 +75,22 @@
 			<div class="icon-section">
 				<i class="fa fa-shopping-cart" aria-hidden="true"></i><br>
 				<small>Products</small>
-				<p> 24</p>
+				<p> 
+				<?php
+					$conn=new PDO("mysql:host=localhost;dbname=onecart-test","root","");
+					$result=$conn->prepare("SELECT DISTINCT COUNT(pro_id) FROM products");
+					$result->execute();
+					
+					for($i=0;$row=$result->fetch();$i++)
+					{
+						?>
+						<tr>
+							<td><label><?php echo $row['COUNT(pro_id)'];?></label></td>
+						</tr>
+						<?php   
+					}
+					?>
+				</p>
 			</div>
 			<div class="detail-section">
 				
@@ -55,7 +100,22 @@
 			<div class="icon-section">
 				<i class="fa fa-users" aria-hidden="true"></i><br>
 				<small>Delivers</small>
-				<p>3</p>
+				<p>
+				<?php
+					$conn=new PDO("mysql:host=localhost;dbname=onecart-test","root","");
+					$result=$conn->prepare("SELECT DISTINCT COUNT(d_id) FROM deliver");
+					$result->execute();
+					
+					for($i=0;$row=$result->fetch();$i++)
+					{
+						?>
+						<tr>
+							<td><label><?php echo $row['COUNT(d_id)'];?></label></td>
+						</tr>
+						<?php   
+					}
+					?>
+					</p>
 			</div>
 			<div class="detail-section">
 				

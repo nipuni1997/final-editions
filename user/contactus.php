@@ -14,14 +14,6 @@
 
     <?php 
         include("include/userfunction.php");
-        include("include/header1.php");
+        include("include/header.php");
         include("include/navbar1.php");
-        include("include/search.php");
-        include("include/bodyleft.php");
-        include("include/bodyright.php");
-        include("include/footer.php");
-        
-     ?>
-    
-</body>
-</html>
+       ?>

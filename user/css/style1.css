@@ -5,9 +5,10 @@
 }
 
 #header{
-    background: #b63206;
+    background:#7e2203;
     height: 110px;
     width: 100%;
+    
 }
 #logo{
     width: 20%;
@@ -26,6 +27,10 @@
     margin-left: 150px;
     margin-top: 20px;
     font-size: larger;
+    
+}
+#name h1{
+    color:#fff;
 }
 #link{
     width: 80%;
@@ -46,70 +51,19 @@
     padding-left: 1%;
 }
 #link ul li:hover{
-    background: #7e2203;
+    background:#7e2203;
     color: azure;
+    
 }
 #link ul li a{
     text-decoration: none;
     font-size: 15px;
-    color: aliceblue;
+    color: #fff;
+   
     /*font-weight: bold;*/
 }
 
 
-/* signup form */
-#link ul li form{
-    position: absolute;
-    display: none;
-    background: rgba(116, 26, 26, 0.884);
-    margin-left: -450px;
-    padding: 2%;
-    box-sizing: border-box;
-    width: 40%;
-}
-#link ul li form table tr td{
-    color: #fff;
-    margin: 30px;
-    /* width: 2%; */
-}
-
-#link ul li form table tr td input{
-    border-radius: 5px;
-    width: 200%;
-    padding: 1%;
-    padding-left: 5%;
-    outline: none;
-    border: 1px solid rgb(204, 1, 1);
-}
-#link ul li form table tr td textarea{
-    border-radius: 5px;
-    width: 175%;
-    padding: 1%;
-    padding-left: 5%;
-    outline: none;
-    border: 1px solid rgb(204, 1, 1);
-}
-
-#link ul li:hover form{
-    display: block;
-
-}
-#link ul li form input{
-    /* width: 35px; */
-    outline: none;
-    border: 1px solid rgb(141, 12, 12);
-    width: 25%;
-    height: 25px;
-    border-radius: 3px;
-    padding-bottom: 2%;
-
-    /* background: #c53606; */
-}
-#link ul li form center input:hover{
-    background: #421202;
-    color: aliceblue;
-    cursor: pointer;
-}
 
 
 #search form input{

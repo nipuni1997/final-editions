@@ -26,7 +26,7 @@
 
             $row_check=$check_cart->rowCount();
 
-            if($row_check==1){
+            if($row_check>=1){
                 echo "<script>alert('This Product Already Added To Your Cart !!!');</script>";
             }
             else{
@@ -140,7 +140,7 @@
             echo "<tr>
                     <td></td>
                     <td><button id='pro_btn1'><a href='indexuser.php'>Continue Shopping</a></button></td>
-                    <td><button id='pro_btn2'>Check Out</button></td>
+                    <td><button id='pro_btn2'><a href='payment.php'>Check Out</a></button></td>
                     <td></td><td></td><td></td><td><b>Net Total =</b></td>
                     <td><b>RS $net_total /= </b></td>
                 </tr>";
@@ -162,6 +162,10 @@
                 echo "<script>window.open('cart.php', '_self');</script>";
             }
         }
+    }
+    function destroy_cart(){
+        include("include/db.php");
+        
     }
 
     // function urgent_order(){

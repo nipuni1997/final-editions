@@ -9,19 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@600&display=swap" rel="stylesheet">
 
 
-</head>
+</head> 
 <body>
-
-    <?php 
+<?php
         include("include/userfunction.php");
-        include("include/header1.php");
+        include("include/header.php");
         include("include/navbar1.php");
-        include("include/search.php");
-        include("include/bodyleft.php");
-        include("include/bodyright.php");
+       
         include("include/footer.php");
-        
-     ?>
-    
+        ?>
 </body>
 </html>

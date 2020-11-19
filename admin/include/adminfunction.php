@@ -175,7 +175,7 @@
                 <table>
                     <tr>
                         <td>Edit Product Name:</td>
-                        <td><Input type='text' name='pro_name' value='".$row['pro_name']."' required /></td>
+                        <td><Input type='text' name='pro_name' value='".$row['pro_name']."' placeholder='Product Name' required /></td>
                     </tr>
                     <tr>
                         <td>Select Category Name:</td>
@@ -212,28 +212,28 @@
 
                     <tr>
                         <td>Edit Weight:</td>
-                        <td><Input type='text' name='pro_weight' value='".$row['pro_weight']."'required /></td>
+                        <td><Input type='text' name='pro_weight' value='".$row['pro_weight']."' placeholder='Weight' required /></td>
                     </tr>
                     <tr>
                         <td>Edit Description:</td>
-                        <td><Input type='text' name='pro_description' value='".$row['pro_description']."'required /></td>
+                        <td><Input type='text' name='pro_description' value='".$row['pro_description']."' placeholder='Description' required /></td>
                     </tr>
                     <tr>
                         <td>Edit More Description:</td>
-                        <td><Input type='text' name='pro_moredescription' value='".$row['pro_moredescription']."'required /></td>
+                        <td><Input type='text' name='pro_moredescription' value='".$row['pro_moredescription']."' placeholder='More' required /></td>
                     </tr>
 
                     <tr>
                         <td>Update Price:</td>
-                        <td><Input type='text' name='pro_price' value='".$row['pro_price']."'required /></td>
+                        <td><Input type='text' name='pro_price' value='".$row['pro_price']."' placeholder='Price' required /></td>
                     </tr>
                     <!-- <tr>
                         <td>Enter Product ID:</td>
-                        <td><Input type='text' name='pro_key'required /></td>
+                        <td><Input type='text' name='pro_key' placeholder='Product Id' required /></td>
                     </tr> -->
                     <tr>
                         <td>Edit Keyword:</td>
-                        <td><Input type='text' name='pro_keyword' value='".$row['pro_keyword']."'required /></td>
+                        <td><Input type='text' name='pro_keyword' value='".$row['pro_keyword']."' placeholder='Keyword' required /></td>
                     </tr>
 
                 </table>
@@ -318,6 +318,8 @@
             $d_phone=$_POST['d_phone'];
             $d_pass_1=$_POST['d_pass_1'];
             $d_pass_2=$_POST['d_pass_2'];
+            if($password_1 != $password_2){array_push($errors, "Passwords do not match");}
+
             $d_pass=md5($d_pass_1);
 
             $add_deli=$con->prepare("INSERT INTO deliver(d_name, d_nic, d_img, d_email, d_add, d_phone,d_pass, d_date)
@@ -375,11 +377,11 @@
                 <table>
                     <tr>
                         <td>Edit Name:</td>
-                        <td><Input type='text' name='d_name' value='".$row['d_name']."' required/></td>
+                        <td><Input type='text' name='d_name' value='".$row['d_name']."' placeholder='Name' required/></td>
                     </tr>
                     <tr>
                         <td>Edit NIC:</td>
-                        <td><Input type='text' name='d_nic' value='".$row['d_nic']."'required /></td>
+                        <td><Input type='text' name='d_nic' value='".$row['d_nic']."' placeholder='NIC' required /></td>
                     </tr>
                     <tr>
                         <td>Update Person Image:</td>
@@ -390,15 +392,15 @@
                     </tr>
                     <tr>
                         <td>Edit Email:</td>
-                        <td><Input type='text' name='d_email' value='".$row['d_email']."' required/></td>
+                        <td><Input type='email' name='d_email' value='".$row['d_email']."' placeholder='Email' required/></td>
                     </tr>
                     <tr>
                         <td>Edit Address:</td>
-                        <td><Input type='text' name='d_add' value='".$row['d_add']."' required/></td>
+                        <td><Input type='text' name='d_add' value='".$row['d_add']."' placeholder='Address' required/></td>
                     </tr>
                     <tr>
                         <td>Edit Contact No:</td>
-                        <td><Input type='text' name='d_phone' value='".$row['d_phone']."' required/></td>
+                        <td><Input type='tel' name='d_phone' value='".$row['d_phone']."'  placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' size='12' maxlength='12' required/></td>
                     </tr>
 
                 </table>
@@ -592,6 +594,8 @@
             $m_phone=$_POST['m_phone'];
             $m_pass_1=$_POST['m_pass_1'];
             $m_pass_2=$_POST['m_pass_2'];
+            if($password_1 != $password_2){array_push($errors, "Passwords do not match");}
+
             $m_pass=md5($m_pass_1);
 
             $add_mana=$con->prepare("INSERT INTO manager(m_name, m_nic, m_img, m_email, m_add, m_phone,m_pass, m_date)
@@ -649,11 +653,11 @@
                 <table>
                     <tr>
                         <td>Edit Name:</td>
-                        <td><Input type='text' name='m_name' value='".$row['m_name']."'required /></td>
+                        <td><Input type='text' name='m_name' value='".$row['m_name']."' placeholder='Name' required /></td>
                     </tr>
                     <tr>
                         <td>Edit NIC:</td>
-                        <td><Input type='text' name='m_nic' value='".$row['m_nic']."' required/></td>
+                        <td><Input type='text' name='m_nic' value='".$row['m_nic']."' placeholder='NIC' required/></td>
                     </tr>
                     <tr>
                         <td>Update Person Image:</td>
@@ -664,15 +668,15 @@
                     </tr>
                     <tr>
                         <td>Edit Email:</td>
-                        <td><Input type='text' name='m_email' value='".$row['m_email']."' required/></td>
+                        <td><Input type='email' name='m_email' value='".$row['m_email']."' placeholder='Email' required/></td>
                     </tr>
                     <tr>
                         <td>Edit Address:</td>
-                        <td><Input type='text' name='m_add' value='".$row['m_add']."'required /></td>
+                        <td><Input type='text' name='m_add' value='".$row['m_add']."' placeholder='Address' required /></td>
                     </tr>
                     <tr>
                         <td>Edit Contact No:</td>
-                        <td><Input type='text' name='m_phone' value='".$row['m_phone']."'required /></td>
+                        <td><Input type='tel' name='m_phone' value='".$row['m_phone']."' placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' size='12' maxlength='12' required /></td>
                     </tr>
 
                 </table>

@@ -13,7 +13,6 @@
       // if(!isset($_GET['view_deliverstatus'])){
 ?>
 
-<div id="bodyright">
     <?php
         if(isset($_GET['edit_cat'])){
             include("edit_cat.php");
@@ -28,7 +27,6 @@
             include("edit_deliver.php");
         }
      ?>
-</div>
 
 <?php
 

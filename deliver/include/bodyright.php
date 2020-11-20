@@ -3,6 +3,7 @@
       if(!isset($_GET['view_order'])){
       if(!isset($_GET['add_status'])){
       if(!isset($_GET['view_status'])){
+      if(!isset($_GET['newMap'])){
 ?>
 
 <div id="bodyright">
@@ -14,6 +15,6 @@
 </div>
 
 <?php
-} } } }
+} } } } }
 //}
 ?>

@@ -9,6 +9,8 @@
             <th>.......................................</th>
             <li><a href="indexdeliver.php?add_status">Add Deliver Status</a></li>
             <li><a href="indexdeliver.php?view_status">View Deliver Status</a></li>
+            <th>.......................................</th>
+            <li><a href="indexdeliver.php?newMap">View Map</a></li>
         </ul>
     </div>
 
@@ -29,5 +31,9 @@
 
         if(isset($_GET['view_status'])){
             include("view_status.php");
+        }
+
+        if(isset($_GET['newMap'])){
+            include("newMap.php");
         }
     ?>

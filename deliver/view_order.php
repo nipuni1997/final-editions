@@ -1,5 +1,5 @@
 <div class="scroll" id="bodyright">
-    <h3>View All Orders From Here</h3>
+    <h2>View All Orders From Here</h2>
     <form method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -9,7 +9,7 @@
                 <th>User Name</th>      <!--user---->
                 <th>cart ID</th>      <!--cart---->
                 <th>Product ID</th>   <!--products---->
-                <th>Ordered Date</th>
+                <th>Added Date</th>
                 <th>Product Name</th> <!--products---->
                 <th>Image</th>        <!--products---->
                 <th>Weight</th>       <!--products---->

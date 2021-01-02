@@ -1,3 +1,17 @@
 <div id="header">
-    <center><h3>Manager Panel</h3></center>
+    <div id="logo">
+        <a href="indexmanager.php"><img src="../images/onecart white.png" alt=""/></a>
+    </div>
+    <div id="name">
+    <h1>MANAGER PANEL</h1>
+    </div>
+
+    <div id="link">
+    <ul>
+        <li>
+            <a href="../index.php"><b>Log out</b></a>
+        </li>
+    </ul>
+    </div>
+
 </div>

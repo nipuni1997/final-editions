@@ -120,7 +120,7 @@
 }
 #bodyleft ul li a img{
     width: 100%;
-    height: 180px;
+    height: 120px;
     margin-bottom: 1px;
     margin-top: 1px;
 }
@@ -280,6 +280,11 @@
     float: right;
     min-height: 535px;
 }
+#cartbodyright img{
+    width: 100%;
+    height: 100%;
+    
+}
 #cartbodyright h3{
     background: #7e2001;
     height: 40px;
@@ -295,14 +300,14 @@
 #bodyright{
     width: 25%;
     border-radius: 3px;
-    background: #fff;
+    background: #ebcdeb;
     margin: 1% 1% 1% 0%;
     float: left;
     height: 500px;
 }
 #bodyright img{
     width: 100%;
-    height: 500px;
+    height: 448px;
 }
 /* .container1{
     width: 100px;
@@ -356,7 +361,7 @@
 
 
 /* Payment page */
-.row {
+.row1 {
     display: -ms-flexbox; /* IE10 */
     display: flex;
     -ms-flex-wrap: wrap; /* IE10 */
@@ -434,10 +439,23 @@
   
   /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
   @media (max-width: 800px) {
-    .row {
+    .row1{
       flex-direction: column-reverse;
     }
     .col-25 {
       margin-bottom: 20px;
     }
+  }
+  .column {
+    float: left;
+    width: 33.33%;
+    border-radius: 15px 50px;
+    border:darkred;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
   }

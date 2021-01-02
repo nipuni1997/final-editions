@@ -17,3 +17,43 @@
         include("include/header.php");
         include("include/navbar1.php");
        ?>
+       <div class="contactus">
+           <center>
+           <h1>CONTACT US</h1>
+</center>
+       </div>
+       <div class="row">
+  <div class="column">
+  <center><h2>Address</h2>
+  <p>237/22,</p>
+<p>Vijayakumaratunga Mawatha,</p>
+<p>Colombo 5,</p>
+<p>Sri Lanka.</p></center>
+  </div>
+  <div class="column">
+<center> <h2>Contact Number</h2>
+  <p>011-2247859</p>
+  <p>077-3620712</p></center>
+  
+  </div>
+  <div class="column">
+    <center>  <h2>E-mail</h2>
+      <p>onecart@gmail.com</p>
+      <p>onecart@yahoo.com</p></center>
+  </div>
+</div>
+      
+      
+
+ 
+  
+
+
+</div>
+</body>
+<footer>
+    <?php
+    include("include/footer.php");
+    ?>
+</footer>
+</html>

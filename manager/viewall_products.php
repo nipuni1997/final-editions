@@ -1,5 +1,5 @@
 <div class="scroll" id="bodyright"> <!---11--->
-    <h3>Update Product From Here</h3>
+    <h2>Update Product From Here</h2>
     <form method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -16,7 +16,7 @@
                 <th>Added Date</th>
             </tr>
 
-            <?php include("include/function.php"); echo viewall_products();?>
+            <?php include("include/managerfunction.php"); echo viewall_products();?>
 
         </table>
     </form>

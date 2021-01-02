@@ -1,18 +1,35 @@
 body{
-    background-image:  url("images/login.jpg");
-    background-repeat: no-repeat;
+    background-image:  url("images/login.jpg");  
+      background-repeat: no-repeat; 
     background-size: cover;
-    color: white;
+   
+   
+
+    
 }
 .container{
     width: 40%;
-    border-radius: 3px;
-    background:transparent;
+    border-radius: 15px 50px;
+    background:#7e2203;
     margin: 1% 1% 1% 0%;
     float: right;
-    height: 600px;
-    margin-top: 40px;
+    height: 620px;
+    margin-top: 60px;
+    color: #fff;
+    margin-left: 20px;
     
+}
+.container1{
+  width: 40%;
+  border-radius: 15px 50px;
+  background:#7e2203;
+  margin: 1% 1% 1% 0%;
+  float: right;
+  height: 320px;
+  margin-top: 190px;
+  color: #fff;
+  margin-left: 20px;
+  
 }
 .header h2{
     padding: 5px;
@@ -20,7 +37,7 @@ body{
 input{
 text-align:center;
 width:400px;
-background:lightcoral ;
+background:palegoldenrod ;
 border:red;
 border-bottom: 1px solid #fff;
 font-family: 'Play',sans-serif;
@@ -29,8 +46,8 @@ font-weight:200px;
 padding:10px;
 transition:border 0.5s;
 outline:none;
-color:#fff;
-border-radius:5px;
+color:black;
+border-radius: 15px 50px;
 
 
 }
@@ -47,8 +64,9 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
     opacity: 0.9;
+    border-radius: 15px 50px;
   }
   
   button:hover {
@@ -66,26 +84,38 @@ button {
   }
   .leftcontainer{
     width: 40%;
-    border-radius: 3px;
-    background:transparent;
+    border-radius: 15px 50px;
+    color: #fff;
     margin: 1% 1% 1% 0%;
     float: left;
-    height: 100px;
-    margin-top: 70px;
+    height: 200px;
+    margin-top: 50px;
     margin-left: 10px;
-
-  }
-  .leftcontainerl{
-    width: 40%;
-    border-radius: 3px;
-    background:transparent;
-    margin: 1% 1% 1% 0%;
-    float: left;
-    height: 100px;
-    margin-top: 20px;
-    margin-left: 10px;
+    background: #7e2203;
+    opacity: 0.9;
     
 
   }
 
+  .indexbox{
+    background: #7e2203;
+    width: 100%;
+    height: 100%;
+  }
+
+
+  /* Responsive */
+  @media screen and (max-width: 1102px) {
+    .leftcontainer , .container ,.container1 {
+      width: 100%;
+      margin: 1% 1% 1% 1%;
+      margin-left: 0;
+    }
+    input{
+      width: 80vw;
+    }
+   .container{
+     height: 75vh;
+   }
+  }
  

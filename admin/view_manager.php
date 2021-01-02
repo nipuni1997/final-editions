@@ -1,5 +1,5 @@
 <div class="scroll" id="bodyright">
-    <h3>Update Manager From Here</h3>
+    <h2>Update Manager From Here</h2>
     <form method="post" enctype="multipart/form-data">
         <table>
             <tr>

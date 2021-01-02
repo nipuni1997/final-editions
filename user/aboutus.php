@@ -17,8 +17,12 @@
         include("include/header.php");
         include("include/navbar1.php");
        ?>
+       <div class="aboutus">
+           <center>
+                 <h1>ABOUT US</h1></center>
+       </div>
        <center>
-       <h1 >About Us</h1>
+       
        
        <p>What it takes to run online grocery store successfully- Powerful Website Features.
         Grocery stores have wide array of products and to offer users the ease of buying,

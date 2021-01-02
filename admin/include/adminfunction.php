@@ -54,7 +54,7 @@
 
         if(isset($_POST['add_product'])){
             $pro_name=$_POST['pro_name'];
-            $cat_id=$_POST['cat_name']; //v 12
+            $cat_id=$_POST['cat_name']; 
 
             $pro_img1=$_FILES['pro_img1']['name'];
             $pro_img1_tmp=$_FILES['pro_img1']['tmp_name'];
@@ -86,7 +86,7 @@
         }
     }
 
-    function viewall_products(){       //v14
+    function viewall_products(){       
         include("include/db.php");
 
         $fetch_pro=$con->prepare("SELECT * FROM products");
@@ -117,7 +117,7 @@
     }
 
     function edit_cat(){
-        include("include/db.php"); //v15
+        include("include/db.php"); 
 
         if(isset($_GET['edit_cat'])){
             $cat_id=$_GET['edit_cat'];
@@ -131,7 +131,7 @@
                         <table>
                             <tr>
                                 <td>Edit Category Name:</td>
-                                <td><Input type='text' name='edit_cat_name' value='".$row['cat_name']."' /></td>
+                                <td><Input type='text' name='edit_cat_name' value='".$row['cat_name']."' required placeholder='Category Name' /></td>
                             </tr>
                         </table>
                         <center><button name='edit_cat'>Edit Category</button></center>
@@ -152,7 +152,7 @@
         }
     }
 
-    function edit_pro(){     //v17
+    function edit_pro(){     
         include("include/db.php");
 
         if(isset($_GET['edit_pro'])){
@@ -175,7 +175,7 @@
                 <table>
                     <tr>
                         <td>Edit Product Name:</td>
-                        <td><Input type='text' name='pro_name' value='".$row['pro_name']."' /></td>
+                        <td><Input type='text' name='pro_name' value='".$row['pro_name']."' placeholder='Product Name' required /></td>
                     </tr>
                     <tr>
                         <td>Select Category Name:</td>
@@ -190,50 +190,50 @@
                     <tr>
                         <td>Update Product Image 1:</td>
                         <td>
-                            <Input type='file' name='pro_img1' />
+                            <Input type='file' name='pro_img1'required />
                             <img src='../images/pro_img/".$row['pro_img1']."' style='width:60px; height:60px' />
                         </td>
                     </tr>
                     <tr>
                         <td>Update Product Image 2:</td>
                         <td>
-                            <Input type='file' name='pro_img2' />
+                            <Input type='file' name='pro_img2'required />
                             <img src='../images/pro_img/".$row['pro_img2']."' style='width:60px; height:60px' />
                         </td>
                     </tr>
                     <!-- <tr>
                         <td>Select Product Image 3:</td>
-                        <td><Input type='file' name='pro_img3' /></td>
+                        <td><Input type='file' name='pro_img3' required/></td>
                     </tr>
                     <tr>
                         <td>Select Product Image 4:</td>
-                        <td><Input type='file' name='pro_img4' /></td>
+                        <td><Input type='file' name='pro_img4'required /></td>
                     </tr> -->
 
                     <tr>
                         <td>Edit Weight:</td>
-                        <td><Input type='text' name='pro_weight' value='".$row['pro_weight']."' /></td>
+                        <td><Input type='text' name='pro_weight' value='".$row['pro_weight']."' placeholder='Weight' required /></td>
                     </tr>
                     <tr>
                         <td>Edit Description:</td>
-                        <td><Input type='text' name='pro_description' value='".$row['pro_description']."' /></td>
+                        <td><Input type='text' name='pro_description' value='".$row['pro_description']."' placeholder='Description' required /></td>
                     </tr>
                     <tr>
                         <td>Edit More Description:</td>
-                        <td><Input type='text' name='pro_moredescription' value='".$row['pro_moredescription']."' /></td>
+                        <td><Input type='text' name='pro_moredescription' value='".$row['pro_moredescription']."' placeholder='More' required /></td>
                     </tr>
 
                     <tr>
                         <td>Update Price:</td>
-                        <td><Input type='text' name='pro_price' value='".$row['pro_price']."' /></td>
+                        <td><Input type='text' name='pro_price' value='".$row['pro_price']."' placeholder='Price' required /></td>
                     </tr>
                     <!-- <tr>
                         <td>Enter Product ID:</td>
-                        <td><Input type='text' name='pro_key' /></td>
+                        <td><Input type='text' name='pro_key' placeholder='Product Id' required /></td>
                     </tr> -->
                     <tr>
                         <td>Edit Keyword:</td>
-                        <td><Input type='text' name='pro_keyword' value='".$row['pro_keyword']."' /></td>
+                        <td><Input type='text' name='pro_keyword' value='".$row['pro_keyword']."' placeholder='Keyword' required /></td>
                     </tr>
 
                 </table>
@@ -274,7 +274,7 @@
         }
     }
 
-    function delete_cat(){  //v19
+    function delete_cat(){  
         include("include/db.php");
 
         $delete_cat_id=$_GET['delete_cat'];
@@ -316,9 +316,18 @@
             $d_email=$_POST['d_email'];
             $d_add=$_POST['d_add'];
             $d_phone=$_POST['d_phone'];
+            $d_pass_1=$_POST['d_pass_1'];
+            $d_pass_2=$_POST['d_pass_2'];
+            if($d_pass_1 != $d_pass_2)
+            {
+                echo "<script>alert('your both passwords are not same !')</script>"; 
+            }
+            else
+            {
+                $d_pass=md5($d_pass_1);
 
-            $add_deli=$con->prepare("INSERT INTO deliver(d_name, d_nic, d_img, d_email, d_add, d_phone, d_date)
-                                    VALUES('$d_name', '$d_nic', '$d_img', '$d_email', '$d_add', '$d_phone', NOW())");
+            $add_deli=$con->prepare("INSERT INTO deliver(d_name, d_nic, d_img, d_email, d_add, d_phone,d_pass, d_date)
+                                    VALUES('$d_name', '$d_nic', '$d_img', '$d_email', '$d_add', '$d_phone','$d_pass', NOW())");
 
             if($add_deli->execute()){
                 echo "<script>alert('Deliver Details Added Successfully !')</script>";
@@ -326,6 +335,9 @@
             else{
                 echo "<script>alert('Deliver Details Not Added Successfully !')</script>";
             }
+            }
+
+            
         }
     }
 
@@ -372,30 +384,30 @@
                 <table>
                     <tr>
                         <td>Edit Name:</td>
-                        <td><Input type='text' name='d_name' value='".$row['d_name']."' /></td>
+                        <td><Input type='text' name='d_name' value='".$row['d_name']."' placeholder='Name' required/></td>
                     </tr>
                     <tr>
                         <td>Edit NIC:</td>
-                        <td><Input type='text' name='d_nic' value='".$row['d_nic']."' /></td>
+                        <td><Input type='text' name='d_nic' value='".$row['d_nic']."' placeholder='NIC' required /></td>
                     </tr>
                     <tr>
                         <td>Update Person Image:</td>
                         <td>
-                            <Input type='file' name='d_img' />
+                            <Input type='file' name='d_img' required/>
                             <img src='../images/deliver/".$row['d_img']."' style='width:60px; height:60px' />
                         </td>
                     </tr>
                     <tr>
                         <td>Edit Email:</td>
-                        <td><Input type='text' name='d_email' value='".$row['d_email']."' /></td>
+                        <td><Input type='email' name='d_email' value='".$row['d_email']."' placeholder='Email' required/></td>
                     </tr>
                     <tr>
                         <td>Edit Address:</td>
-                        <td><Input type='text' name='d_add' value='".$row['d_add']."' /></td>
+                        <td><Input type='text' name='d_add' value='".$row['d_add']."' placeholder='Address' required/></td>
                     </tr>
                     <tr>
                         <td>Edit Contact No:</td>
-                        <td><Input type='text' name='d_phone' value='".$row['d_phone']."' /></td>
+                        <td><Input type='tel' name='d_phone' value='".$row['d_phone']."'  placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' size='12' maxlength='12' required/></td>
                     </tr>
 
                 </table>
@@ -441,26 +453,24 @@
     function view_deliverstatus(){       //check it deliver Status
         include("include/db.php");
 
-        $fetch_person=$con->prepare("SELECT * FROM deliver");
-        $fetch_person->setFetchMode(PDO:: FETCH_ASSOC);
-        $fetch_person->execute();
+        $fetch_pro=$con->prepare("SELECT * FROM deliverstatus");
+        $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
+        $fetch_pro->execute();
 
         $i=1;
 
-        while($row=$fetch_person->fetch()):
+        while($row=$fetch_pro->fetch()):
             echo "<tr>
                     <td style='min-width:50px'>".$i++."</td>
-                    <td style='min-width:60px'><a href='indexadmin.php?edit_deliver=".$row['d_id']."'>Edit<a/></td>
-                    <td style='min-width:60px'><a href='delete_cat.php?delete_deliver=".$row['d_id']."'>Delete<a/></td>
-                    <td style='min-width:135px'>".$row['d_name']."</td>
-                    <td>".$row['d_nic']."</td>
+                    <td style='min-width:60px'>".$row['cart_id']."</td>
+                    <td style='min-width:60px'>".$row['user_id']."</td>
+                    <td style='min-width:135px'>".$row['user_name']."</td>
+                    <td>".$row['condi']."</td>
                     <td style='min-width:135px'>
-                        <img src='../images/deliver/".$row['d_img']."' />
+                        <img src='../images/condition/".$row['img']."' />
                     </td>
-                    <td>".$row['d_email']."</td>
-                    <td>".$row['d_add']."</td>
-                    <td>".$row['d_phone']."</td>
-                    <td style='min-width:150px'>".$row['d_date']."</td>
+                    <td>".$row['status']."</td>
+                    <td style='min-width:150px'>".$row['deli_date']."</td>
 
                  </tr>";
         endwhile;
@@ -472,47 +482,51 @@
         $fetch_cart=$con->prepare("SELECT * FROM cart");
         $fetch_cart->setFetchMode(PDO:: FETCH_ASSOC);
         $fetch_cart->execute();
-        $row_cart=$fetch_cart->fetch();
-
+        // $row_cart=$fetch_cart->fetch();
         // $id1=$row_cart['pro_id'];
+        // $id2=$row_cart['userid'];
         $row_check=$fetch_cart->rowCount();
 
-        $fetch_user=$con->prepare("SELECT u_id FROM user");
+        $fetch_user=$con->prepare("SELECT u_id, u_name FROM user"); // WHERE u_id='$id2'
         $fetch_user->setFetchMode(PDO:: FETCH_ASSOC);
         $fetch_user->execute();
         $row_user=$fetch_user->fetch();
 
 
-
         if($row_check > 0){
-          $id1=$row_cart['pro_id'];
-          // $id2=$row_cart['userid'];
 
-          $fetch_pro=$con->prepare("SELECT pro_id, pro_name, pro_img1, pro_weight, pro_price FROM products WHERE pro_id='$id1'");
-          $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
-          $fetch_pro->execute();
-          $row_pro=$fetch_pro->fetch();
+            $i=1;
 
-          $i=1;
+            while($row_cart=$fetch_cart->fetch()):
+                $id1=$row_cart['pro_id'];
 
-          $sub_total=$row_pro['pro_price'] * $row_cart['qnty'];
-          // need a while loop
-            echo "<tr>
-                    <td style='min-width:50px'>".$i++."</td>
-                    <td style='min-width:50px'>".$row_user['u_id']."</td>
-                    <td style='min-width:50px'>".$row_cart['cart_id']."</td>
-                    <td style='min-width:50px'>".$row_pro['pro_id']."</td>
-                    <td style='min-width:150px'>".$row_pro['pro_name']."</td>
-                    <td style='min-width:135px'>
-                        <img src='../images/pro_img/".$row_pro['pro_img1']."' />
-                    </td>
-                    <td>".$row_pro['pro_weight']."</td>
-                    <td>".$row_pro['pro_price']."/=</td>
-                    <td>".$row_cart['qnty']."</td>
-                    <td>".$row_cart['urgent']."</td>
-                    <td>".$sub_total."/=</td>
+                $fetch_pro=$con->prepare("SELECT pro_id, pro_name, pro_img1, pro_weight, pro_price FROM products WHERE pro_id='$id1'");
+                $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
+                $fetch_pro->execute();
+                $row_pro=$fetch_pro->fetch();
 
-                 </tr>";
+                $sub_total=$row_pro['pro_price'] * $row_cart['qnty'];
+                
+                echo "<tr>
+                        <td style='min-width:100px'>".$i++."</td>
+                        <td style='min-width:100px'>".$row_user['u_id']."</td>
+                        <td style='min-width:130px'>".$row_user['u_name']."</td>
+                        <td style='min-width:100px'>".$row_cart['cart_id']."</td>
+                        <td style='min-width:100px'>".$row_pro['pro_id']."</td>
+                        <td style='min-width:150px'>".$row_cart['addDate']."</td>
+                        <td style='min-width:150px'>".$row_pro['pro_name']."</td>
+                        <td style='min-width:135px'>
+                            <img src='../images/pro_img/".$row_pro['pro_img1']."' />
+                        </td>
+                        <td>".$row_pro['pro_weight']."</td>
+                        <td>".$row_pro['pro_price']."/=</td>
+                        <td>".$row_cart['qnty']."</td>
+                        <td>".$row_cart['urgent']."</td>
+                        <td>".$sub_total."/=</td>
+
+                    </tr>";
+
+            endwhile;
         }
         else{
           echo "<center><h2>Nothing To Display.</br>
@@ -520,6 +534,66 @@
         }
     }
 
+    function vieworderCount(){
+        include("include/db.php");
+
+        $fetch_cart=$con->prepare("SELECT * FROM cart");
+        $fetch_cart->setFetchMode(PDO:: FETCH_ASSOC);
+        $fetch_cart->execute();
+        $row_cart=$fetch_cart->fetch();
+        $row_check=$fetch_cart->rowCount();
+
+        echo "$row_check";
+    }
+
+    function managerCount(){
+        include("include/db.php");
+
+        $fetch_cart=$con->prepare("SELECT * FROM manager");
+        $fetch_cart->setFetchMode(PDO:: FETCH_ASSOC);
+        $fetch_cart->execute();
+        $row_cart=$fetch_cart->fetch();
+        $row_check=$fetch_cart->rowCount();
+
+        echo "$row_check";
+    }
+
+    function categoryCount(){
+        include("include/db.php");
+
+        $fetch_cart=$con->prepare("SELECT * FROM main_category");
+        $fetch_cart->setFetchMode(PDO:: FETCH_ASSOC);
+        $fetch_cart->execute();
+        $row_cart=$fetch_cart->fetch();
+        $row_check=$fetch_cart->rowCount();
+
+        echo "$row_check";
+    }     
+
+    function view_user(){
+        include("include/db.php");
+
+        $fetch_pro=$con->prepare("SELECT * FROM user");
+        $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
+        $fetch_pro->execute();
+
+        $i=1;
+
+        while($row=$fetch_pro->fetch()):
+            echo "<tr>
+                    <td style='min-width:50px'>".$i++."</td>
+                    <td style='min-width:135px'>".$row['u_name']."</td>
+                    
+                    <td>".$row['u_email']."</td>
+                    <td>".$row['u_city']."</td>
+                    <td>".$row['u_add']."</td>
+                    <td>".$row['u_phone']."</td>
+                    <td style='min-width:150px'>".$row['u_reg_date']."</td>
+
+                 </tr>";
+        endwhile;
+    }
+    
     // function no_order(){
     //   include("include/db.php");
     //
@@ -551,16 +625,28 @@
             $m_email=$_POST['m_email'];
             $m_add=$_POST['m_add'];
             $m_phone=$_POST['m_phone'];
-
-            $add_mana=$con->prepare("INSERT INTO manager(m_name, m_nic, m_img, m_email, m_add, m_phone, m_date)
-                                    VALUES('$m_name', '$m_nic', '$m_img', '$m_email', '$m_add', '$m_phone', NOW())");
-
-            if($add_mana->execute()){
-                echo "<script>alert('Manager Details Added Successfully !')</script>";
+            $m_pass_1=$_POST['m_pass_1'];
+            $m_pass_2=$_POST['m_pass_2'];
+            if($m_pass_1 != $m_pass_2)
+            {
+                echo "<script>alert('your both passwords are not same !')</script>";
             }
-            else{
-                echo "<script>alert('Manager Details Not Added Successfully !')</script>";
+            else
+            {
+                $m_pass=md5($m_pass_1);
+
+                $add_mana=$con->prepare("INSERT INTO manager(m_name, m_nic, m_img, m_email, m_add, m_phone,m_pass, m_date)
+                                        VALUES('$m_name', '$m_nic', '$m_img', '$m_email', '$m_add', '$m_phone','$m_pass', NOW())");
+    
+                if($add_mana->execute()){
+                    echo "<script>alert('Manager Details Added Successfully !')</script>";
+                }
+                else{
+                    echo "<script>alert('Manager Details Not Added Successfully !')</script>";
+                }
             }
+
+           
         }
     }
 
@@ -607,30 +693,30 @@
                 <table>
                     <tr>
                         <td>Edit Name:</td>
-                        <td><Input type='text' name='m_name' value='".$row['m_name']."' /></td>
+                        <td><Input type='text' name='m_name' value='".$row['m_name']."' placeholder='Name' required /></td>
                     </tr>
                     <tr>
                         <td>Edit NIC:</td>
-                        <td><Input type='text' name='m_nic' value='".$row['m_nic']."' /></td>
+                        <td><Input type='text' name='m_nic' value='".$row['m_nic']."' placeholder='NIC' required/></td>
                     </tr>
                     <tr>
                         <td>Update Person Image:</td>
                         <td>
-                            <Input type='file' name='m_img' />
+                            <Input type='file' name='m_img' required/>
                             <img src='../images/manager/".$row['m_img']."' style='width:60px; height:60px' />
                         </td>
                     </tr>
                     <tr>
                         <td>Edit Email:</td>
-                        <td><Input type='text' name='m_email' value='".$row['m_email']."' /></td>
+                        <td><Input type='email' name='m_email' value='".$row['m_email']."' placeholder='Email' required/></td>
                     </tr>
                     <tr>
                         <td>Edit Address:</td>
-                        <td><Input type='text' name='m_add' value='".$row['m_add']."' /></td>
+                        <td><Input type='text' name='m_add' value='".$row['m_add']."' placeholder='Address' required /></td>
                     </tr>
                     <tr>
                         <td>Edit Contact No:</td>
-                        <td><Input type='text' name='m_phone' value='".$row['m_phone']."' /></td>
+                        <td><Input type='tel' name='m_phone' value='".$row['m_phone']."' placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' size='12' maxlength='12' required /></td>
                     </tr>
 
                 </table>

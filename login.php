@@ -10,16 +10,17 @@
     
   </head>
   <body>
-      <center>
-  <div class="leftcontainerl">
-        <h1>One Cart Online Shopping</h1>
-        <h2>Dear Customer,</h2>
+  <center>
+    <div class="leftcontainer">
+       <img src="images/onecart white.png" alt="">
+        <h1>Online Shopping</h1>
+        <!-- <h2>Dear Customer,</h2>
         <h3>Log into your account for quick shopping...</h3>
         <h3>We save your time... </h3>
-        <h1>HAPPY SHOPPING DAY!!</h1></center>
+        <h1>HAPPY SHOPPING DAY!!</h1></center> -->
 
     </div>
-      <div class="container">
+      <div class="container1">
       <div class="header">
       <center><h2>Log In </h2></center>
       </div>

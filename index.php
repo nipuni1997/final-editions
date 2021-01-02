@@ -13,15 +13,18 @@
 
 </head>
 <body>
-    <center>
+   <div class="body">
+<center>
     <div class="leftcontainer">
-        <h1>One Cart Online Shopping</h1>
-        <h3>Dear Customer,</h3>
-        <h4>Log into your account for quick shopping...</h4>
-        <h4>We save your time... </h4>
-        <h1>HAPPY SHOPPING DAY!!</h1></center>
+       <img src="images/onecart white.png" alt="">
+        <h1>Online Shopping</h1>
+        <!-- <h2>Dear Customer,</h2>
+        <h3>Log into your account for quick shopping...</h3>
+        <h3>We save your time... </h3>
+        <h1>HAPPY SHOPPING DAY!!</h1></center> -->
 
     </div>
+    
 <div class="container">
       <div class="header">
       <center><h1>Get Your Cart Now </h1></center>
@@ -33,10 +36,8 @@
      <div class="inputform">
       <div class="fields">
      
-      <input type="text" name="username" placeholder="User Name" required></div>
-      <div class="fields">
+      <input type="text" name="username" placeholder="User Name" pattern="[a-z]{2,}" required></div>
      
-      <input type="text" name="nic" placeholder="NIC Number" required></div>
       <div class="fields">
       
       <input type="email" name="email" placeholder="Email Address" required></div>
@@ -48,10 +49,10 @@
       <input type="text" name="address" placeholder="Your Address" required></div>
       <div class="fields">
       
-      <input type="text" name="postal" placeholder="Postal Code" required></div>
+      <input type="text" name="postal" placeholder="Postal Code(11111)" pattern="[0-9]{5}" required></div>
       <div class="fields">
       
-      <input type="text" name="phonenumber" placeholder="Phone Number" required></div>
+      <input type="text" name="phonenumber" placeholder="011-1111111" pattern='[0-9]{3}-[0-9]{7}' required></div>
       <div class="fields">
       
       <input type="password" name="password_1" placeholder=" Type your password " required></div>
@@ -61,14 +62,14 @@
 </div>
 </center>
       <button type="submit" name="reg_user" class="signupbtn">Submit</button>
-      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="button" class="cancelbtn" onclick="javascript:window.location='index.php'" >Cancel</button>
       <center>
       <p>Already registered?<a href="login.php"><b>Log in</b></a></p>
       <div class="or"><h4>OR</h4></div>
-      <p>Visit as a guest?<a href="user/firstpage.php"><b>Visit</b></a></p></center>
+      <p>Visit as a guest?<a href="user/firstpage.php"><b font-size="10px">Visit</b></a></p></center>
       </form>
       </div>
-   
+</div>
     
 </body>
 </html>

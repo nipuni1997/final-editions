@@ -1,7 +1,7 @@
 <div id="bodyright"> <!---11--->
-    <h3>Edit Delivery Person From Here</h3>
+    <h2>Edit Delivery Person From Here</h2>
 
 <?php
-    include("include/function.php");
-    echo edit_deliver();    
+    include("include/managerfunction.php");
+    echo edit_deliver();
 ?>

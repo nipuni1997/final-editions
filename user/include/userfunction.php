@@ -1,6 +1,7 @@
 <?php
 
-    function getIp() {                           //get user ids
+    function getIp() {   
+                           //get user ids
         $ip = $_SERVER['REMOTE_ADDR'];
 
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -10,6 +11,7 @@
         }
 
         return $ip;
+
     }
 
    
@@ -19,9 +21,9 @@
 
         if(isset($_POST['cart_btn'])){
             $pro_id=$_POST['pro_id'];
-            $id=getIP();
+            $id=getIp();
 
-            $check_cart=$con->prepare("SELECT * FROM cart WHERE pro_id='$pro_id' AND userid='$id'");
+            $check_cart=$con->prepare("SELECT * FROM cart WHERE pro_id='$pro_id' AND user_id='$id'");
             $check_cart->execute();
 
             $row_check=$check_cart->rowCount();
@@ -30,7 +32,7 @@
                 echo "<script>alert('This Product Already Added To Your Cart !!!');</script>";
             }
             else{
-                $add_cart=$con->prepare("INSERT INTO cart(userid, pro_id, qnty, urgent) VALUES('$id', '$pro_id', '1', ' ')");   //edited
+                $add_cart=$con->prepare("INSERT INTO cart(user_id, pro_id, qnty, urgent,addDate) VALUES('$id', '$pro_id', '1', ' ',NOW())");   //edited
 
                 if($add_cart->execute()){
                     echo "<script>window.open('indexuser.php', '_self');</script>";
@@ -46,7 +48,7 @@
         include("include/db.php");
 
         $id=getIP();
-        $get_cart_item=$con->prepare("SELECT * FROM cart WHERE userid='$id'");
+        $get_cart_item=$con->prepare("SELECT * FROM cart WHERE user_id='$id'");
         $get_cart_item->execute();
 
         $count_cart=$get_cart_item->rowCount();
@@ -58,16 +60,14 @@
         include("include/db.php");
 
         $id=getIP();
-        $get_cart_item=$con->prepare("SELECT * FROM cart WHERE userid='$id'");
+        $get_cart_item=$con->prepare("SELECT * FROM cart WHERE user_id='$id'");
         $get_cart_item->setFetchMode(PDO:: FETCH_ASSOC);
         $get_cart_item->execute();
 
         $cart_empty=$get_cart_item->rowCount();
         if($cart_empty==0){
             include("emptycart.php");
-            // echo "<left><h2>No Item To Display In Your Cart.</h2></left>";
-            // echo "<left><h3>Continue Shopping And Add Foods To Your Cart.</h3></left>";
-            // echo "<left><h4><a href='indexuser.php'>Continue Shopping</a></h4></left>";
+           
         }
         else{
 
@@ -83,10 +83,11 @@
                 }
             }
 
-            if(isset($_POST['up_urgent'])){
+            if(isset($_POST['urgent'])){
                 $urgent=$_POST['urgent'];
-
-                foreach($urgent AS $key=>$value){
+                
+                if($urgent==1){
+                   
                     $update_urgent=$con->prepare("UPDATE cart SET urgent='$value' WHERE cart_id='$key'");
 
                     if($update_urgent->execute()){
@@ -94,6 +95,7 @@
                     }
                 }
             }
+        
 
             echo "<table cellpadding='0' cellspacing='0'>
                     <tr>
@@ -102,7 +104,7 @@
                         <th>Description</th>
                         <th>Quantity</th>
                         <th>Price</th>
-                        <th>Urgent Order</th>
+                        
                         <th>Remove</th>
                         <th>Sub Total</th>
                     </tr>";
@@ -121,27 +123,38 @@
                         <td><img src='../images/pro_img/".$row_pro['pro_img1']."' /></td>
                         <td>".$row_pro['pro_name']."</td>
                         <td>".$row_pro['pro_weight']."</td>
-                        <td><input type='number' name='qnty[".$row['cart_id']."]' value='".$row['qnty']."' /><input type='submit' name='up_qnty' value='Save' /></td>
+                        <td><input type='number'min='1' name='qnty[".$row['cart_id']."]' value='".$row['qnty']."' /><input type='submit' name='up_qnty' value='Save' /></td>
                         <td>RS ".$row_pro['pro_price']."/=</td>
-                        <td><input type='number' name='urgent[".$row['cart_id']."]' value='".$row['urgent']."' /><input type='submit' name='up_urgent' value='Save' /></td>
-                        <td><button id='pro_btn1'><a href='delete.php?delete_id=".$row_pro['pro_id']."'>Delete</a></button></td>
+                                               
+                      
+                                                <td><button id='pro_btn1'><a href='delete.php?delete_id=".$row_pro['pro_id']."'>Delete</a></button></td>
+
                         <td>";
                             // $qnty=$row['qnty'];
                             // $pro_price=$row_pro['pro_price'];
+                            
                             $sub_total=$row_pro['pro_price'] * $row['qnty'];
                         echo "Rs ".$sub_total."/=";
 
                         $net_total=$net_total+$sub_total;
-                        echo "</td>
+                        echo "</td> 
+             
                     </tr>";
 
-            endwhile;
+                endwhile;
+              
+           echo "<tr>
+           <td><input type='number' min='0' max='1' name='urgent' value='0' />Urgent order <input type='submit' name='urgent' value='Save' /></td>
 
+           </tr>";
+           
+           
+        
             echo "<tr>
                     <td></td>
                     <td><button id='pro_btn1'><a href='indexuser.php'>Continue Shopping</a></button></td>
-                    <td><button id='pro_btn2'><a href='payment.php'>Check Out</a></button></td>
-                    <td></td><td></td><td></td><td><b>Net Total =</b></td>
+                    <td><button id='pro_btn1'><a href='payment.php'>Check Out</a></button></td>
+                    <td></td><td></td><td><b>Net Total =</b></td>
                     <td><b>RS $net_total /= </b></td>
                 </tr>";
         }
@@ -211,7 +224,7 @@
                                 <button id='pro_btn'><a href='pro_detail.php?pro_id=".$row_pro['pro_id']."'>View</a></button>
                                 <input type='hidden' value='".$row_pro['pro_id']."' name='pro_id' />
                                 <button id='pro_btn' name='cart_btn'>Cart</button>
-                                <button id='pro_btn'><a href='#'>Whist List</a></button>
+                              
                             </center>
                         </a>
                     </form>
@@ -239,6 +252,7 @@
         while($row_pro=$fetch_pro->fetch()):
         // $pro_id=$row_pro['pro_id'];
             echo "<li>
+            <form method='post' enctype='multipart/form-data'>
                         <a href='pro_detail.php?pro_id=".$row_pro['pro_id']."'>
                             <h4>".$row_pro['pro_name']."</h4>
                             <img src='../images/pro_img/".$row_pro['pro_img1']."' />
@@ -248,9 +262,10 @@
                                 <button id='pro_btn'><a href='pro_detail.php?pro_id=".$row_pro['pro_id']."'>View</a></button>
                                 <input type='hidden' value='".$row_pro['pro_id']."' name='pro_id' />
                                 <button id='pro_btn' name='cart_btn'>Cart</button>
-                                <button id='pro_btn'><a href='#'>Whist List</a></button>
+                                
                             </center>
                         </a>
+                        </form>
                  </li>";
 
             // echo "<h4>".$row_pro['pro_name']."</h4>";
@@ -275,6 +290,7 @@
         while($row_pro=$fetch_pro->fetch()):
         // $pro_id=$row_pro['pro_id'];
             echo "<li>
+            <form method='post' enctype='multipart/form-data'>
                         <a href='pro_detail.php?pro_id=".$row_pro['pro_id']."'>
                             <h4>".$row_pro['pro_name']."</h4>
                             <img src='../images/pro_img/".$row_pro['pro_img1']."' />
@@ -284,9 +300,10 @@
                                 <button id='pro_btn'><a href='pro_detail.php?pro_id=".$row_pro['pro_id']."'>View</a></button>
                                 <input type='hidden' value='".$row_pro['pro_id']."' name='pro_id' />
                                 <button id='pro_btn' name='cart_btn'>Cart</button>
-                                <button id='pro_btn'><a href='#'>Whist List</a></button>
+                                
                             </center>
                         </a>
+                        </form>
                  </li>";
 
             // echo "<h4>".$row_pro['pro_name']."</h4>";
@@ -311,6 +328,7 @@
         while($row_pro=$fetch_pro->fetch()):
         // $pro_id=$row_pro['pro_id'];
             echo "<li>
+            <form method='post' enctype='multipart/form-data'>
                         <a href='pro_detail.php?pro_id=".$row_pro['pro_id']."'>
                             <h4>".$row_pro['pro_name']."</h4>
                             <img src='../images/pro_img/".$row_pro['pro_img1']."' />
@@ -319,9 +337,10 @@
                             <center>
                                 <button id='pro_btn'><a href='pro_detail.php?pro_id=".$row_pro['pro_id']."'>View</a></button>
                                 <button id='pro_btn'><a href='#'>Cart</a></button>
-                                <button id='pro_btn'><a href='#'>Whist List</a></button>
+                                
                             </center>
                         </a>
+                        </form>
                  </li>";
 
             // echo "<h4>".$row_pro['pro_name']."</h4>";
@@ -346,6 +365,7 @@
         while($row_pro=$fetch_pro->fetch()):
         // $pro_id=$row_pro['pro_id'];
             echo "<li>
+            <form method='post' enctype='multipart/form-data'>
                         <a href='pro_detail.php?pro_id=".$row_pro['pro_id']."'>
                             <h4>".$row_pro['pro_name']."</h4>
                             <img src='../images/pro_img/".$row_pro['pro_img1']."' />
@@ -354,9 +374,10 @@
                             <center>
                                 <button id='pro_btn'><a href='pro_detail.php?pro_id=".$row_pro['pro_id']."'>View</a></button>
                                 <button id='pro_btn'><a href='#'>Cart</a></button>
-                                <button id='pro_btn'><a href='#'>Whist List</a></button>
+                                
                             </center>
                         </a>
+                        </form>
                  </li>";
 
             // echo "<h4>".$row_pro['pro_name']."</h4>";
@@ -400,7 +421,7 @@
                         <h4>Retail Price : RS ".$row_pro['pro_price']."/=</h4>
                         <form method='post'>
                             <input type='hidden' value='".$row_pro['pro_id']."' name='pro_id' />
-                            <button name='buy_now'>Buy Now</button>
+                            <button name='cart_btn'>Buy Now</button>
                             <button name='cart_btn'>Add to Cart</button>
                         </form>
                     </center>
@@ -520,4 +541,9 @@
         echo "</ul></div>";
         }
     }
+
+
+
+    // edit customer
+  
 ?>

@@ -1,5 +1,5 @@
 <div id="bodyright">
-    <h3>View All Categories</h3>
+    <h2>View All Categories</h2>
     <form action="" method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -8,18 +8,18 @@
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            
-            <?php include("include/function.php"); echo viewall_category(); ?>
-            
+
+            <?php include("include/managerfunction.php"); echo viewall_category(); ?>
+
         </table>
     </form>
 
-    <h3 id="add_cat">Add New Category From Here</h3>
+    <h2 id="add_cat">Add New Category From Here</h2>
     <form method="post">
         <table>
             <tr>
                 <td>Enter Category Name:</td>
-                <td><Input type="text" name="cat_name" /></td>
+                <td><Input type="text" name="cat_name" placeholder="New Category" required /></td>
             </tr>
         </table>
         <center><button name="add_cat">Add Category</button></center>
@@ -29,5 +29,5 @@
 <?php
     //v 11
     echo add_cat();
-    
+
 ?>

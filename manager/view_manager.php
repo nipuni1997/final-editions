@@ -1,5 +1,5 @@
 <div class="scroll" id="bodyright">
-    <h2>Update Delivery Person From Here</h2>
+    <h2>Update Manager From Here</h2>
     <form method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -15,7 +15,7 @@
                 <th>Added Date</th>
             </tr>
 
-            <?php include("include/managerfunction.php"); echo view_deliver();?>
+            <?php include("include/managerfunction.php"); echo view_manager();?>
 
         </table>
     </form>

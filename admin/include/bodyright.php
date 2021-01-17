@@ -4,15 +4,15 @@
       if(!isset($_GET['add_product'])){
       if(!isset($_GET['viewall_products'])){
       if(!isset($_GET['view_order'])){
+      if(!isset($_GET['view_user'])){
       if(!isset($_GET['add_manager'])){
       if(!isset($_GET['view_manager'])){
       if(!isset($_GET['add_deliver'])){
       if(!isset($_GET['view_deliver'])){
-      if(!isset($_GET['view_status'])){
-      // if(!isset($_GET['view_deliverstatus'])){
+      if(!isset($_GET['view_deliverstatus'])){
+      if(!isset($_GET['returned'])){
 ?>
 
-<div id="bodyright">
     <?php
         if(isset($_GET['edit_cat'])){
             include("edit_cat.php");
@@ -27,9 +27,7 @@
             include("edit_deliver.php");
         }
      ?>
-</div>
 
 <?php
-} } } } } } } } } }
-//}
+} } } } } } } } } } } }
 ?>

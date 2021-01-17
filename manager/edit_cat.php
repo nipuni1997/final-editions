@@ -1,4 +1,6 @@
-<h3>Edit Category From Here</h3>
+<div id="bodyright">
+<h2>Edit Category From Here</h2>
+
     <!-- <form method="post">
         <table>
             <tr>
@@ -8,4 +10,4 @@
         </table>
         <center><button name="add_cat">Edit Category</button></center>
     </form> -->
-<?php include("include/function.php"); echo edit_cat(); ?>
+<?php include("include/managerfunction.php"); echo edit_cat(); ?>

@@ -1,15 +1,15 @@
 <?php
-    include("include/function.php");
+    include("include/managerfunction.php");
 
     if(isset($_GET['delete_cat'])){
         echo delete_cat();
     }
 
-    if(isset($_GET['delete_pro'])){  //v21
+    if(isset($_GET['delete_pro'])){  
         echo delete_product();
     }
 
-    if(isset($_GET['delete_deliver'])){ 
+    if(isset($_GET['delete_deliver'])){
         echo delete_deliver();
     }
 ?>

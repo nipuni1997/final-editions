@@ -24,17 +24,29 @@
             </tr>
             <tr>
                 <td>Contact No:</td>
+
                 <td><Input type="tel" name="m_phone" placeholder='+94*******' size='12' maxlength='12' required/></td>
                 <!-- pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' -->
+
+                <td><Input type="tel" name="m_phone" placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' size='12' maxlength='12' required/></td>
+
             </tr>
 
             <tr>
                 <td>Password:</td>
+
                 <td><Input type="password" id='password' name="m_pass_1" placeholder="*********" required/></td>
             </tr>
             <tr>
                 <td>Confirm password:</td>
                 <td><Input type="password" id='confirm_password' name="m_pass_2" placeholder="*********" required/></td>
+
+                <td><Input type="password" name="m_pass_1" placeholder="*********" required/></td>
+            </tr>
+            <tr>
+                <td>Confirm password:</td>
+                <td><Input type="password" name="m_pass_2" placeholder="*********" required/></td>
+
             </tr>
 
         </table>

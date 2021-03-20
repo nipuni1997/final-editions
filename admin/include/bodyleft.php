@@ -1,4 +1,5 @@
 
+
         <nav class="sidebar">
             <div class="text">Content Management</div>
             <ul>
@@ -54,6 +55,42 @@
          </script>
 
 
+    <div id="bodyleft">
+        <h3>Content Management</h3>
+        <!-- <img src="images/slider/1.1.jpg" alt=""> -->
+        <ul>
+            <div id="s">
+            <li><a href="indexadmin.php?home">Home</a></li>
+            </div>
+
+            <div id="k">
+            <li><a href="indexadmin.php?viewall_cat">View All Categories</a></li>
+            <li><a href="indexadmin.php?add_product">ADD New Products</a></li>
+            <li><a href="indexadmin.php?viewall_products">View All Products</a></li>
+            </div>
+            
+            <div id="t">
+            <li><a href="indexadmin.php?view_order">View Orders</a></li>
+            <li><a href="indexadmin.php?view_user">View Users</a></li>
+            </div>
+            
+            <div id="t">
+            <li><a href="indexadmin.php?add_manager">Add New Manager</a></li>
+            <li><a href="indexadmin.php?view_manager">View Manager</a></li>
+            </div>
+            
+            <div id="t">
+            <li><a href="indexadmin.php?add_deliver">Add New Delivery Person</a></li>
+            <li><a href="indexadmin.php?view_deliver">View Delivery Person</a></li>
+            </div>
+            
+            <div id="s">
+            <li><a href="indexadmin.php?view_status">View Deliver Information</a></li>
+            </div>
+        </ul>
+    </div>
+
+
     <?php
         if(isset($_GET['home'])){
             include("home.php");
@@ -72,6 +109,11 @@
 
         if(isset($_GET['view_order'])){
             include("view_order.php");
+        }
+
+        
+        if(isset($_GET['view_user'])){
+            include("view_user.php");
         }
 
 

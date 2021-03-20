@@ -33,7 +33,7 @@ body{
 #bodyleft{
     /* background-image: ; */
     width: 25%;
-    height: 530px;
+    height: 570px;
     margin-top: 10px;
     margin-left: 0px;
     border-radius: 3px;
@@ -117,13 +117,12 @@ body{
     background: rgb(112, 0, 0);
 }
 #bodyright{
-   
     padding-bottom: 1%;
     width: 74%;
-    min-height: 515px;
+    min-height: 555px;
     /* margin-top: 10px;
     margin-left: 10px; */
-    margin: 10px 0px 10px 10px;
+    margin: 10px 0px 10px 5px;
     border-radius: 3px;
     float: left;
     background-color: #bf033b;
@@ -309,3 +308,27 @@ background-color:#8E44AD;
 .dashbord-skyblue .detail-section{
 background-color:#803D9B;
 }
+a
+{
+    color:yellow;
+    font-family:Tahoma,Geneva,sans-serif;
+    margin-left:30px;
+}
+
+.cong
+{
+    background: rgba(44,62,80,0.7);
+    padding:40px;
+    height:200px;
+    margin-left:180px;
+    margin: 0 auto;
+    margin-top:120px;
+    width:240px;
+}
+
+h2
+{
+    margin-top: 50px;
+    margin-left: 10px;
+}
+

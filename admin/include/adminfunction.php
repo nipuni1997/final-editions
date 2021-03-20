@@ -324,6 +324,7 @@
             $d_phone=$_POST['d_phone'];
             $d_pass_1=$_POST['d_pass_1'];
             $d_pass_2=$_POST['d_pass_2'];
+
             if($d_pass_1 != $d_pass_2)
             {
                 echo "<script>alert('your both passwords are not same !')</script>";
@@ -331,6 +332,12 @@
             else
             {
                 $d_pass=md5($d_pass_1);
+
+
+            if($password_1 != $password_2){array_push($errors, "Passwords do not match");}
+
+            $d_pass=md5($d_pass_1);
+
 
             $add_deli=$con->prepare("INSERT INTO deliver(d_name, d_nic, d_img, d_email, d_add, d_phone,d_pass, d_date)
                                     VALUES('$d_name', '$d_nic', '$d_img', '$d_email', '$d_add', '$d_phone','$d_pass', NOW())");
@@ -413,7 +420,11 @@
                     </tr>
                     <tr>
                         <td>Edit Contact No:</td>
+
                         <td><Input type='tel' name='d_phone' value='".$row['d_phone']."'  placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' size='12' maxlength='12' required/></td>
+
+                        <td><Input type='tel' name='d_phone' value='".$row['d_phone']."'  placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' size='12' maxlength='12' required/></td>
+
                     </tr>
 
                 </table>
@@ -511,6 +522,13 @@
                 $fetch_pro->execute();
                 $row_pro=$fetch_pro->fetch();
 
+
+                 </tr>";
+                }  
+        
+        
+        
+
                 $sub_total=$row_pro['pro_price'] * $row_cart['qnty'];
 
                 echo "<tr>
@@ -538,7 +556,9 @@
           echo "<center><h2>Nothing To Display.</br>
                             No One Order Foods From Your Shop....!!!</h2></center>";
         }
+
     }
+
 
     function vieworderCount(){
         include("include/db.php");
@@ -576,6 +596,8 @@
         echo "$row_check";
     }
 
+
+
     function view_user(){
         include("include/db.php");
 
@@ -590,6 +612,10 @@
                     <td style='min-width:50px'>".$i++."</td>
                     <td style='min-width:135px'>".$row['u_name']."</td>
 
+
+
+                    <td>".$row['u_nic']."</td>
+
                     <td>".$row['u_email']."</td>
                     <td>".$row['u_city']."</td>
                     <td>".$row['u_add']."</td>
@@ -599,6 +625,10 @@
                  </tr>";
         endwhile;
     }
+
+
+
+    
 
     // function no_order(){
     //   include("include/db.php");
@@ -633,6 +663,7 @@
             $m_phone=$_POST['m_phone'];
             $m_pass_1=$_POST['m_pass_1'];
             $m_pass_2=$_POST['m_pass_2'];
+
             if($m_pass_1 != $m_pass_2)
             {
                 echo "<script>alert('your both passwords are not same !')</script>";
@@ -643,6 +674,14 @@
 
                 $add_mana=$con->prepare("INSERT INTO manager(m_name, m_nic, m_img, m_email, m_add, m_phone,m_pass, m_date)
                                         VALUES('$m_name', '$m_nic', '$m_img', '$m_email', '$m_add', '$m_phone','$m_pass', NOW())");
+
+            if($password_1 != $password_2){array_push($errors, "Passwords do not match");}
+
+            $m_pass=md5($m_pass_1);
+
+            $add_mana=$con->prepare("INSERT INTO manager(m_name, m_nic, m_img, m_email, m_add, m_phone,m_pass, m_date)
+                                    VALUES('$m_name', '$m_nic', '$m_img', '$m_email', '$m_add', '$m_phone','$m_pass', NOW())");
+
 
                 if($add_mana->execute()){
                     echo "<script>alert('Manager Details Added Successfully !')</script>";
@@ -722,7 +761,11 @@
                     </tr>
                     <tr>
                         <td>Edit Contact No:</td>
+
                         <td><Input type='tel' name='m_phone' value='".$row['m_phone']."' placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' size='12' maxlength='12' required /></td>
+
+                        <td><Input type='tel' name='m_phone' value='".$row['m_phone']."' placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' size='12' maxlength='12' required /></td>
+
                     </tr>
 
                 </table>

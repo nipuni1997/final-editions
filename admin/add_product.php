@@ -37,7 +37,11 @@
             </tr>
             <tr>
                 <td>Enter More Description :</td>
+
                 <td><Input type="text" name="pro_moredescription" placeholder="More" required/></td>
+
+                <td><Input type="text" name="pro_moredescription" placeholder="More"/></td>
+
             </tr>
 
             <tr>

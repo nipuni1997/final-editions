@@ -16,11 +16,12 @@
         include("include/userfunction.php");
         include("include/header.php");
         include("include/navbar1.php");
+        include("include/paymentgateway.php");
        ?>
        <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="/action_page.php">
+      <!-- <form action="/action_page.php">
 
         <div class="row">
           <div class="col-50">
@@ -49,8 +50,7 @@
           <input type="checkbox" checked="checked" name="sameadr"> Cash on delivery
         </label>
           <div class="col-50">
-            <h3>Card Payment</h3>
-           
+         
             
             <label for="cname">Name on Card</label>
             <input type="text" id="cname" name="cardname" placeholder="John More Doe">
@@ -74,8 +74,29 @@
         </div>
         
         <input type="submit" value="Continue to checkout" class="btn">
-      </form>
+      </form> -->
+      <form method="post" action="https://sandbox.payhere.lk/pay/checkout">   
+    <input type="hidden" name="merchant_id" value="1216379">    <!-- Replace your Merchant ID -->
+    <input type="hidden" name="return_url" value="http://sample.com/return">
+    <input type="hidden" name="cancel_url" value="http://sample.com/cancel">
+    <input type="hidden" name="notify_url" value="http://sample.com/notify">  
+    <br><br>Order Details<br>
+    <input type="text" name="order_id" value="ItemNo12345">
+    <input type="text" name="items" value="Amount"><br>
+    <input type="text" name="currency" value="LKR">
+    <input type="text" name="amount" value="1000">  
+    <br><br>Customer Details<br>
+    <input type="text" name="first_name" value="Saman">
+    <input type="text" name="last_name" value="Perera"><br>
+    <input type="text" name="email" value="samanp@gmail.com">
+    <input type="text" name="phone" value="0771234567"><br>
+    <input type="text" name="address" value="No.1, Galle Road">
+    <input type="text" name="city" value="Colombo">
+    <input type="hidden" name="country" value="Sri Lanka"><br><br> 
+    <input name="submit" type="image" src="https://www.payhere.lk/downloads/images/pay_with_payhere.png" style="width:200px;" value="Buy Now"">   
+</form> 
     </div>
+   
   </div>
 
  
@@ -85,5 +106,6 @@
 
 
        </form>
+       
        <body>
            </html>

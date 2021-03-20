@@ -161,6 +161,7 @@
 
         // echo $net_total;
     }
+    
 
     function delete_cart_items(){
         include("include/db.php");

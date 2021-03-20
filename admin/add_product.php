@@ -1,5 +1,5 @@
 <div id="bodyright">
-    <h3>Add New Product From Here</h3>
+    <h2>Add New Product From Here</h2>
     <form method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -37,7 +37,11 @@
             </tr>
             <tr>
                 <td>Enter More Description :</td>
+
+                <td><Input type="text" name="pro_moredescription" placeholder="More" required/></td>
+
                 <td><Input type="text" name="pro_moredescription" placeholder="More"/></td>
+
             </tr>
 
             <tr>

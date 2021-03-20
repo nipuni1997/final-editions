@@ -10,19 +10,9 @@ body{
     box-sizing:border-box !important;
 }
 #header{
-
     background: #7e2203;
     height: 110px;
     width: 100%;
-
-    background-color: #e0455f;
-    background-image: linear-gradient(147deg, #e0455f 0%, #44000b 74%);
-    height: 110px;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-
 }
 
 #header h3

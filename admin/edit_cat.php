@@ -1,4 +1,6 @@
-<h3>Edit Category From Here</h3>
+<div id="bodyright">
+<h2>Edit Category From Here</h2>
+
     <!-- <form method="post">
         <table>
             <tr>

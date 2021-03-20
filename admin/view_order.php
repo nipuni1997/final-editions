@@ -1,16 +1,16 @@
 <div class="scroll" id="bodyright">
-    <h3>View All Orders From Here</h3>
+    <h2>View All Orders From Here</h2>
     <form method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <!-- <th>No.</th> -->
                 <th>Order ID</th>     <!--increment---->
-                <th>User ID</th>      <!--user---->
-                <th>User Name</th>
+                <th>User ID</th>
+                <th>User Name</th>      <!--user---->
                 <th>cart ID</th>      <!--cart---->
-                <th>Product ID</th>   <!--products---->
-                <th>Added Date</th> <!--products---->
-                <th>Product Name</th>
+                <th>Product ID</th>
+                <th>Added Date</th>
+                <th>Product Name</th> <!--products---->
                 <th>Image</th>        <!--products---->
                 <th>Weight</th>       <!--products---->
                 <th>Price (RS)</th>    <!--products---->

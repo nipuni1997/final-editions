@@ -1,5 +1,5 @@
 <div class="scroll" id="bodyright">
-    <h2>Update Delivery Information From Here</h2>
+    <h2>View Returned Items From Here</h2>
     <form method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -13,7 +13,7 @@
                 <th>Deliver Date</th>
             </tr>
 
-            <?php include("include/adminfunction.php"); echo view_deliverstatus();?>
+            <?php include("include/adminfunction.php"); echo returned();?>
 
         </table>
     </form>

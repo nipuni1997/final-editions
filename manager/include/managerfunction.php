@@ -7,7 +7,7 @@
             $add_cat=$con->prepare("INSERT INTO stock(cat_name) VALUES ('$cat_name')");
             if($add_cat->execute()){
                 echo "<script>alert('Category Added Successfully !')</script>";
-                echo "<script>window.open('indexadmin.php?viewall_cat', '_self')</script>";
+                echo "<script>window.open('indexmanager.php?viewall_cat', '_self')</script>";
             }
             else{
                 echo "<script>alert('Category Not Added Successfully !')</script>";
@@ -31,7 +31,7 @@
     function viewall_category(){
         include("include/db.php");
 
-        $fetch_cat=$con->prepare("SELECT * FROM stock WHERE cat_name <>' '"); //WHERE cat_name ='Meat' ORDER BY cat_name
+        $fetch_cat=$con->prepare("SELECT * FROM stock  WHERE cat_name <>' '");
         $fetch_cat->setFetchMode(PDO:: FETCH_ASSOC);
         $fetch_cat->execute();
 
@@ -42,7 +42,7 @@
             echo "<tr>
                     <td style='min-width:15px'>".$i++."</td>
                     <td>".$row['cat_name']."</td>
-                    <td style='min-width:50px'><a href='indexadmin.php?edit_cat=".$row['cat_id']."'>Edit</a></td>
+                    <td style='min-width:50px'><a href='indexmanager.php?edit_cat=".$row['cat_id']."'>Edit</a></td>
                     <td style='min-width:50px'><a href='delete_cat.php?delete_cat=".$row['cat_id']."'>Delete</a></td>
                  </tr>";
         endwhile;
@@ -98,7 +98,7 @@
         while($row=$fetch_pro->fetch()):
             echo "<tr>
                     <td style='min-width:50px'>".$i++."</td>
-                    <td style='min-width:80px'><a href='indexadmin.php?edit_pro=".$row['pro_id']."'>Edit<a/></td>
+                    <td style='min-width:80px'><a href='indexmanager.php?edit_pro=".$row['pro_id']."'>Edit<a/></td>
                     <td style='min-width:80px'><a href='delete_cat.php?delete_pro=".$row['pro_id']."'>Delete<a/></td>
                     <td style='min-width:135px'>".$row['pro_name']."</td>
                     <td style='min-width:135px'>
@@ -144,7 +144,7 @@
 
                         if($edit_cat->execute()){
                             echo "<script>alert('Category Updated Successfully !')</script>";
-                            echo "<script>window.open('indexadmin.php?viewall_cat', '_self')</script>";
+                            echo "<script>window.open('indexmanager.php?viewall_cat', '_self')</script>";
                         }
 
 
@@ -243,7 +243,7 @@
 
             if(isset($_POST['edit_product'])){
                 $pro_name=$_POST['pro_name'];
-                $cat_id=$_POST['cat_name'];//v 18
+                $cat_id=$_POST['cat_name'];
 
                 $pro_img1=$_FILES['pro_img1']['name'];
                 $pro_img1_tmp=$_FILES['pro_img1']['tmp_name'];
@@ -268,11 +268,25 @@
 
                 if($edit_pro->execute()){
                     echo "<script>alert('Product Updated Successfully !')</script>";
-                    echo "<script>window.open('indexadmin.php?viewall_products', '_self')</script>";
+                    echo "<script>window.open('indexmanager.php?viewall_products', '_self')</script>";
                 }
             }
         }
     }
+
+    // function delete_cat(){
+    //     include("include/db.php");
+    //
+    //     $delete_cat_id=$_GET['delete_cat'];
+    //
+    //     $delete_cat=$con->prepare("DELETE FROM stock WHERE cat_id='$delete_cat_id'");
+    //
+    //     if($delete_cat->execute()){
+    //         echo "<script>alert('Category Deleted Successfully !')</script>";
+    //         echo "<script>window.open('indexmanager.php?viewall_cat', '_self')</script>";
+    //     }
+    //
+    // }
 
     function delete_cat(){
         include("include/db.php");
@@ -285,7 +299,7 @@
 
         if($delete_cat->execute() and $delete_cat1->execute()){
             echo "<script>alert('Category and Related Items Deleted Successfully !')</script>";
-            echo "<script>window.open('indexadmin.php?viewall_cat', '_self')</script>";
+            echo "<script>window.open('indexmanager.php?viewall_cat', '_self')</script>";
         }
         // if($delete_cat1->execute()){
         //     echo "<script>alert('Category Deleted Successfully !')</script>";
@@ -302,7 +316,7 @@
 
         if($delete_pro->execute()){
             echo "<script>alert('Product Deleted Successfully !')</script>";
-            echo "<script>window.open('indexadmin.php?viewall_products', '_self')</script>";
+            echo "<script>window.open('indexmanager.php?viewall_products', '_self')</script>";
         }
     }
 
@@ -324,7 +338,6 @@
             $d_phone=$_POST['d_phone'];
             $d_pass_1=$_POST['d_pass_1'];
             $d_pass_2=$_POST['d_pass_2'];
-
             if($d_pass_1 != $d_pass_2)
             {
                 echo "<script>alert('your both passwords are not same !')</script>";
@@ -332,12 +345,6 @@
             else
             {
                 $d_pass=md5($d_pass_1);
-
-
-            if($password_1 != $password_2){array_push($errors, "Passwords do not match");}
-
-            $d_pass=md5($d_pass_1);
-
 
             $add_deli=$con->prepare("INSERT INTO deliver(d_name, d_nic, d_img, d_email, d_add, d_phone,d_pass, d_date)
                                     VALUES('$d_name', '$d_nic', '$d_img', '$d_email', '$d_add', '$d_phone','$d_pass', NOW())");
@@ -366,7 +373,7 @@
         while($row=$fetch_pro->fetch()):
             echo "<tr>
                     <td style='min-width:60px'>".$i++."</td>
-                    <td style='min-width:80px'><a href='indexadmin.php?edit_deliver=".$row['d_id']."'>Edit<a/></td>
+                    <td style='min-width:80px'><a href='indexmanager.php?edit_deliver=".$row['d_id']."'>Edit<a/></td>
                     <td style='min-width:80px'><a href='delete_cat.php?delete_deliver=".$row['d_id']."'>Delete<a/></td>
                     <td style='min-width:135px'>".$row['d_name']."</td>
                     <td>".$row['d_nic']."</td>
@@ -420,11 +427,7 @@
                     </tr>
                     <tr>
                         <td>Edit Contact No:</td>
-
                         <td><Input type='tel' name='d_phone' value='".$row['d_phone']."'  placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' size='12' maxlength='12' required/></td>
-
-                        <td><Input type='tel' name='d_phone' value='".$row['d_phone']."'  placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' size='12' maxlength='12' required/></td>
-
                     </tr>
 
                 </table>
@@ -449,7 +452,7 @@
 
                 if($edit_deli->execute()){
                     echo "<script>alert('Delivery Person Updated Successfully !')</script>";
-                    echo "<script>window.open('indexadmin.php?view_deliver', '_self')</script>";
+                    echo "<script>window.open('indexmanager.php?view_deliver', '_self')</script>";
                 }
             }
         }
@@ -463,7 +466,7 @@
 
         if($delete_pro->execute()){
             echo "<script>alert('Deliver Person Removed Successfully !')</script>";
-            echo "<script>window.open('indexadmin.php?view_deliver', '_self')</script>";
+            echo "<script>window.open('indexmanager.php?view_deliver', '_self')</script>";
         }
     }
 
@@ -522,13 +525,6 @@
                 $fetch_pro->execute();
                 $row_pro=$fetch_pro->fetch();
 
-
-                 </tr>";
-                }  
-        
-        
-        
-
                 $sub_total=$row_pro['pro_price'] * $row_cart['qnty'];
 
                 echo "<tr>
@@ -556,9 +552,7 @@
           echo "<center><h2>Nothing To Display.</br>
                             No One Order Foods From Your Shop....!!!</h2></center>";
         }
-
     }
-
 
     function vieworderCount(){
         include("include/db.php");
@@ -596,8 +590,6 @@
         echo "$row_check";
     }
 
-
-
     function view_user(){
         include("include/db.php");
 
@@ -612,10 +604,6 @@
                     <td style='min-width:50px'>".$i++."</td>
                     <td style='min-width:135px'>".$row['u_name']."</td>
 
-
-
-                    <td>".$row['u_nic']."</td>
-
                     <td>".$row['u_email']."</td>
                     <td>".$row['u_city']."</td>
                     <td>".$row['u_add']."</td>
@@ -625,10 +613,6 @@
                  </tr>";
         endwhile;
     }
-
-
-
-    
 
     // function no_order(){
     //   include("include/db.php");
@@ -663,7 +647,6 @@
             $m_phone=$_POST['m_phone'];
             $m_pass_1=$_POST['m_pass_1'];
             $m_pass_2=$_POST['m_pass_2'];
-
             if($m_pass_1 != $m_pass_2)
             {
                 echo "<script>alert('your both passwords are not same !')</script>";
@@ -674,14 +657,6 @@
 
                 $add_mana=$con->prepare("INSERT INTO manager(m_name, m_nic, m_img, m_email, m_add, m_phone,m_pass, m_date)
                                         VALUES('$m_name', '$m_nic', '$m_img', '$m_email', '$m_add', '$m_phone','$m_pass', NOW())");
-
-            if($password_1 != $password_2){array_push($errors, "Passwords do not match");}
-
-            $m_pass=md5($m_pass_1);
-
-            $add_mana=$con->prepare("INSERT INTO manager(m_name, m_nic, m_img, m_email, m_add, m_phone,m_pass, m_date)
-                                    VALUES('$m_name', '$m_nic', '$m_img', '$m_email', '$m_add', '$m_phone','$m_pass', NOW())");
-
 
                 if($add_mana->execute()){
                     echo "<script>alert('Manager Details Added Successfully !')</script>";
@@ -706,16 +681,16 @@
 
         while($row=$fetch_pro->fetch()):
             echo "<tr>
-                    <td style='min-width:60px'>".$i++."</td>
-                    <td style='min-width:80px'><a href='indexadmin.php?edit_manager=".$row['m_id']."'>Edit<a/></td>
-                    <td style='min-width:80px'><a href='delete_cat.php?delete_manager=".$row['m_id']."'>Delete<a/></td>
+                    <td style='min-width:50px'>".$i++."</td>
+                    <td style='min-width:60px'><a href='indexmanager.php?edit_manager=".$row['m_id']."'>Edit<a/></td>
+                    <td style='min-width:60px'><a href='delete_cat.php?delete_manager=".$row['m_id']."'>Delete<a/></td>
                     <td style='min-width:135px'>".$row['m_name']."</td>
                     <td>".$row['m_nic']."</td>
-                    <td style='min-width:120px'>
+                    <td style='min-width:135px'>
                         <img src='../images/manager/".$row['m_img']."' />
                     </td>
-                    <td style='min-width:200px'>".$row['m_email']."</td>
-                    <td style='min-width:200px'>".$row['m_add']."</td>
+                    <td>".$row['m_email']."</td>
+                    <td>".$row['m_add']."</td>
                     <td>".$row['m_phone']."</td>
                     <td style='min-width:150px'>".$row['m_date']."</td>
 
@@ -761,11 +736,7 @@
                     </tr>
                     <tr>
                         <td>Edit Contact No:</td>
-
                         <td><Input type='tel' name='m_phone' value='".$row['m_phone']."' placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' size='12' maxlength='12' required /></td>
-
-                        <td><Input type='tel' name='m_phone' value='".$row['m_phone']."' placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' size='12' maxlength='12' required /></td>
-
                     </tr>
 
                 </table>
@@ -790,7 +761,7 @@
 
                 if($edit_mana->execute()){
                     echo "<script>alert('Manager Updated Successfully !')</script>";
-                    echo "<script>window.open('indexadmin.php?view_manager', '_self')</script>";
+                    echo "<script>window.open('indexmanager.php?view_manager', '_self')</script>";
                 }
             }
         }
@@ -804,14 +775,14 @@
 
         if($delete_mana->execute()){
             echo "<script>alert('Manager Removed Successfully !')</script>";
-            echo "<script>window.open('indexadmin.php?view_manager', '_self')</script>";
+            echo "<script>window.open('indexmanager.php?view_manager', '_self')</script>";
         }
     }
 
-    function returned(){
+    function returned(){       //check it deliver Status
         include("include/db.php");
 
-        $fetch_pro=$con->prepare("SELECT * FROM deliverstatus WHERE status = 'Returned'"); //d and user u WHERE d.uid=u.u_id
+        $fetch_pro=$con->prepare("SELECT * FROM deliverstatus WHERE status = 'Returned'");
         $fetch_pro->setFetchMode(PDO:: FETCH_ASSOC);
         $fetch_pro->execute();
 
@@ -820,6 +791,7 @@
         while($row=$fetch_pro->fetch()):
             echo "<tr>
                     <td style='min-width:50px'>".$i++."</td>
+
 
                     <td style='min-width:135px'>".$row['user_name']."</td>
                     <td>".$row['condi']."</td>

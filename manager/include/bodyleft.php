@@ -11,6 +11,7 @@
                     </ul>
                 </li>
 
+
                 <!-- <li><a href="indexmanager.php?view_order">View Orders</a></li> -->
                 <li><a href="#" class="deli-btn">View Orders<span class="fas fa-caret-down second"></span></a>
                     <ul class="deli-show">
@@ -20,6 +21,16 @@
                 </li>
 
                 <li><a href="indexmanager.php?view_user">View Users</a></li>
+
+
+                <li><a href="indexmanager.php?view_order">View Orders</a></li>
+                <li><a href="indexmanager.php?view_user">View Users</a></li>
+               <!-- <li><a href="#" class="serv-btn">Manager<span class="fas fa-caret-down second"></span></a>
+                    <ul class="serv-show">
+                    <li><a href="indexmanager.php?add_manager">Add New Manager</a></li>
+                    <li><a href="indexmanager.php?view_manager">View Manager</a></li>
+                    </ul>
+                </li>-->
 
                 <li><a href="#" class="deli-btn">Deliver<span class="fas fa-caret-down third"></span></a>
                     <ul class="deli-show">
@@ -72,6 +83,7 @@
             include("viewall_products.php");
         }
 
+
         if(isset($_GET['view_normal'])){
             include("view_normal.php");
         }
@@ -86,6 +98,11 @@
                 if(isset($_GET['view_Urgentorder_VIEW'])){
                     include("view_Urgentorder_VIEW.php");
                 }
+
+        if(isset($_GET['view_order'])){
+            include("view_order.php");
+        }
+
 
         if(isset($_GET['view_user'])){
             include("view_user.php");

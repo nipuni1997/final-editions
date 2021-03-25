@@ -496,7 +496,11 @@
         endwhile;
     }
 
+
     function view_order1(){
+
+    function view_order(){
+
         include("include/db.php");
 
         $fetch_cart=$con->prepare("SELECT * FROM cart");
@@ -805,6 +809,7 @@
         endwhile;
     }
 
+
     function view_Normalorder(){
       include("include/db.php");
 
@@ -976,4 +981,5 @@
                             No One Order Foods From Your Shop....!!!</h2></center>";
         }
     }
+
 ?>

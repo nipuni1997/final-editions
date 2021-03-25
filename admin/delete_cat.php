@@ -5,7 +5,7 @@
         echo delete_cat();
     }
 
-    if(isset($_GET['delete_pro'])){  //v21
+    if(isset($_GET['delete_pro'])){  
         echo delete_product();
     }
 

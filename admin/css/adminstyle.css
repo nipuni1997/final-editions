@@ -92,7 +92,7 @@ body{
     
 }
 #bodyright form table tr td{
-    padding-left: 1.5%;
+    padding-left: 5%;
     /* width:50%; */
     min-width: 135px;
     height: 35px;
@@ -134,7 +134,7 @@ body{
 }
 
 .scroll{
-    /* v14 */
+    
     overflow-x: scroll;
     overflow-y: scroll;
     /* text-align: center; */

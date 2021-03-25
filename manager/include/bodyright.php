@@ -3,10 +3,14 @@
       if(!isset($_GET['viewall_cat'])){
       if(!isset($_GET['add_product'])){
       if(!isset($_GET['viewall_products'])){
+
         if(!isset($_GET['view_normal'])){
         if(!isset($_GET['view_urgent'])){
           if(!isset($_GET['view_Urgentorder_VIEW'])){
           if(!isset($_GET['view_Normalorder_VIEW'])){
+
+      if(!isset($_GET['view_order'])){
+
       if(!isset($_GET['view_user'])){
       if(!isset($_GET['add_deliver'])){
       if(!isset($_GET['view_deliver'])){
@@ -30,6 +34,10 @@
      ?>
 
 <?php
+
 } } } } } } } } } } } } }
+
+} } } } } } } } } }
+
 
 ?>

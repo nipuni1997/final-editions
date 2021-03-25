@@ -8,7 +8,11 @@
             </tr>
             <tr>
                 <td>Enter NIC No:</td>
+
                 <td><Input type="text" name="d_nic" placeholder="*********V" pattern="^([0-9]{9}[x|X|v|V]|[0-9]{12})$"required/></td>
+
+                <td><Input type="text" name="d_nic" placeholder="*********V" maxlength="12"required/></td>
+
             </tr>
             <tr>
                 <td>Add Image:</td>
@@ -16,7 +20,10 @@
             </tr>
             <tr>
                 <td>Enter Email:</td>
+
                 <td><Input type="email" name="d_email" placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/></td>
+               <td><Input type="email" name="d_email" placeholder="Email" required/></td>
+
             </tr>
             <tr>
                 <td>Address:</td>

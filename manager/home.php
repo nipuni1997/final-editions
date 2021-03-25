@@ -1,5 +1,9 @@
 <div id="bodyright">
+
 	<h2>Welcome to  Manager Home Page </h2>
+
+	<h2>Welcome to  admin Home Page </h2>
+
 	<div class="main-section">
 		<div class="dashbord">
 			<div class="icon-section">
